@@ -9,10 +9,12 @@
 </head>
 <body>
     <header>
-        <span class="title">
+        <span class="title-left">
             <img src="Images/ChangeMe.jpg", width=150vw>
             <strong>Beans and Machines</strong>
             <p class="title-links"><a href="">Products</a> | <a href="">About Us</a> | <a href="">Contact</a></p>
+        </span>
+        <span class="title-right">
             <div class="title-buttons">
                 <a href=""><img src="Images/Icons/cart.png", width=50vw></a>
                 <p>Cart</p>
@@ -22,4 +24,5 @@
                 <p>Log In</p>
             </div>
         </span>
+        
     </header>
