@@ -8,14 +8,18 @@
 	<table>
 		<tr>
 			<th>ID</th>
-			<th>data</th>
+			<th>Name</th>
+			<th>Expirary date</th>
+			<th>Stock</th>
 		</tr>
 		<?php
 		// creates a new row for each row of data gotten from the database, need to close the php "mode" to do html
 		foreach ($data as $row) { ?>
 			<tr>
-				<td><?php echo $row[0];?>
-				<td><?php echo $row[1];?>
+				<td class="data"><?php echo $row[0];?></td>
+				<td class="data"><?php echo $row[1];?></td>
+				<td class="data"><?php echo $row[2];?></td>
+				<td class="data"><?php echo $row[3];?></td>
 			</tr>
 		<!-- This is needed to close the foreach command -->
 		<?php } ?> 

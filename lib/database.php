@@ -13,7 +13,7 @@ function connection() {
 }
 
 function getData() {
-	$query = 'SELECT * FROM test';
+	$query = 'SELECT * FROM product';
 	$pdo = connection();
 	$stmt = $pdo->prepare($query);
 	$stmt->execute();
