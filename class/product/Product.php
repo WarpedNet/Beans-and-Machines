@@ -9,7 +9,7 @@ class Product
 
     public function setProductID($productID)
     {
-        $this->productID = productID;
+        $this->$productID = $productID;
     }
 
     public function getProductID()
@@ -19,7 +19,7 @@ class Product
 
     public function setProductName($productName)
     {
-        $this->productName = productName;
+        $this->$productName = $productName;
     }
 
     public function getProductName()
@@ -29,7 +29,7 @@ class Product
 
     public function setStock($stock)
     {
-        $this->stock = stock;
+        $this->stock = $stock;
     }
 
     public function getStock()
