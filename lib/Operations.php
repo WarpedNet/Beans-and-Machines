@@ -13,7 +13,7 @@ class Operations
         );
         return $pdo;
     }
-    private function read($column, $table)
+    private function readData($column, $table)
     {
         $pdo =  $this->getConnection();
         $query = "SELECT ? FROM ?";

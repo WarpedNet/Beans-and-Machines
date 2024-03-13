@@ -1,5 +1,5 @@
 <?php
-
+require "../lib/Operations.php"
 namespace product;
 class Product
 {
@@ -37,5 +37,7 @@ class Product
         return $this->stock;
     }
 }
-
+    public function getProduct() {
+        return readData("*", "Product");
+    }
 ?>
