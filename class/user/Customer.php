@@ -27,4 +27,11 @@ class Customer
     {
         $this->address = $address;
     }
+
+    public function displayCustomer() {
+        echo "
+            IsMember: $isMember
+            Address: $address   
+        " + displayUser();
+    }
 }
