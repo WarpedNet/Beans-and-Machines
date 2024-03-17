@@ -27,11 +27,10 @@ class Customer
     {
         $this->address = $address;
     }
-
-    public function displayCustomer() {
-        echo "
-            IsMember: $isMember
-            Address: $address   
-        " + displayUser();
+    function displayCustomer() {
+        $customer = new Customer();
+        $customer->address = "address";
+        $customer->isMember = true;
     }
+        
 }
