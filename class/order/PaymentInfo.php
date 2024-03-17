@@ -15,7 +15,7 @@ class PaymentInfo
 
     public function getCardNumber()
     {
-        return this->cardNumber;
+        return $this->cardNumber;
     }
 
     public function setCardExpDate($cardExpDate)

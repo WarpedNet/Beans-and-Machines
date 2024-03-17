@@ -32,7 +32,7 @@ class Customer
         return "
             IsMember: $this->isMember
             Address: $this->address
-        "
+        ";
     }
         
 }

@@ -61,11 +61,11 @@ class Delivery
 
     public function displayDelivery() {
         return "
-        Est Arrival: $estArrival
-        DeliveryCost: $deliveryCost
-        DeliveryMethod: $deliveryMethod
-        DeliveryNotes: $deliveryNotes
-        DeliveryAddress: $deliveryAddress
+        Est Arrival: $this->estArrival
+        DeliveryCost: $this->deliveryCost
+        DeliveryMethod: $this->deliveryMethod
+        DeliveryNotes: $this->deliveryNotes
+        DeliveryAddress: $this->deliveryAddress
         ";
     }
 }
