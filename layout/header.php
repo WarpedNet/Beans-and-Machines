@@ -16,7 +16,7 @@
         </span>
         <span class="title-right">
             <div class="title-buttons">
-                <a href=""><img src="Images/Icons/cart.png", width=50vw></a>
+                <a href="cart.php"><img src="Images/Icons/cart.png", width=50vw></a>
                 <p>Cart</p>
             </div>
             <div class="title-buttons">

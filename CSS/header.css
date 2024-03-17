@@ -17,7 +17,9 @@
 .title-left a {
 	text-decoration: none;
 }
-
+.title-left a:visited {
+	color: black;
+}
 .title-left a:hover {
 	color: red;
 }
