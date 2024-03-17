@@ -1,4 +1,5 @@
 <?php
+namespace order;
 class ProductOrder {
 	private $quantity;
 

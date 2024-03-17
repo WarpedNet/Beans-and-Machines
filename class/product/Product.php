@@ -1,12 +1,12 @@
 <?php
-require "../lib/Operations.php"
 namespace product;
+require "../lib/Operations.php";
+
 class Product
 {
     private $productID;
     private $productName;
     private $stock;
-    private $cart = new Cart;
 
     public function setProductID($productID)
     {
