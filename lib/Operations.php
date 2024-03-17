@@ -23,7 +23,7 @@ class Operations
     }
 
     public function readAllData($column, $table) {
-        $pdo =  $this->getConnection();
+        $pdo =  $this->getConnection();;
         $query = "SELECT ? FROM ?";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(1,$column, PDO::PARAM_STR);
