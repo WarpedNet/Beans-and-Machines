@@ -26,6 +26,6 @@ class Invoice extends PaymentInfo
     }
 
     public function displayInvoice() {
-        return "InvoiceID: $invoiceID\n"+displayPaymentInfo();
+        return "InvoiceID: $this->invoiceID\n"+displayPaymentInfo();
     }
 }

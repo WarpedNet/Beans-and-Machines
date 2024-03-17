@@ -40,9 +40,9 @@ class Product
 
     public function displayProduct() {
         return "
-            ProductID: $productID
-            ProductName: $productName
-            Stock: $stock
+            ProductID: $this->productID
+            ProductName: $this->productName
+            Stock: $this->stock
         ";
     }
 }

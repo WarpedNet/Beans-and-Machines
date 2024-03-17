@@ -49,10 +49,10 @@ class PaymentInfo
     }
     public function displayPaymentInfo() {
         return "
-            CardNumber: $cardNumber
-            CardExpDate: $cardExpDate
-            CardCVV: $cardCVV
-            CardType: $cardType
+            CardNumber: $this->cardNumber
+            CardExpDate: $this->cardExpDate
+            CardCVV: $this->cardCVV
+            CardType: $this->cardType
         ";
     }
 }

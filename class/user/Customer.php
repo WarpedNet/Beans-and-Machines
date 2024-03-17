@@ -30,8 +30,8 @@ class Customer
     }
     public function displayCustomer() {
         return "
-            IsMember: $isMember
-            Address: $address
+            IsMember: $this->isMember
+            Address: $this->address
         "
     }
         

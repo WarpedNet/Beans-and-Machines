@@ -39,9 +39,9 @@ class User
 
     public function displayUser() {
         return "
-            Email: $email
-            Password: $password
-            PhoneNum: $phoneNum
+            Email: $this->email
+            Password: $this->password
+            PhoneNum: $this->phoneNum
         ";
     }
 }

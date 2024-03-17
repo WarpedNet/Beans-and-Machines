@@ -39,9 +39,9 @@ class Log
 
     public function displayLog() {
         return "
-            Time: $time
-            Error: $error
-            Info: $info
+            Time: $this->time
+            Error: $this->error
+            Info: $this->info
         ";
     }
 }

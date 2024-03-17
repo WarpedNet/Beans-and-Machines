@@ -39,9 +39,9 @@ class Administrator
 
     public function displayAdministrator() {
         return "
-        AdminID: $adminID
-        First Name: $fName
-        Surname: $sName
+        AdminID: $this->adminID
+        First Name: $this->fName
+        Surname: $this->sName
         ";
     }
 }
