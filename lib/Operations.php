@@ -33,14 +33,14 @@ class Operations
         return $data;   
     }
 
-    public function readData($column, $table, $columnMatch, $rowMatch) {
+    public function readData($column, $table, $rowMatch, $values) {
         $pdo =  $this->getConnection();
         $query = "SELECT ? FROM ? WHERE ?=?";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(1,$column, PDO::PARAM_STR);
         $stmt->bindParam(2,$table,PDO::PARAM_STR);
-        $stmt->bindParam(3,$table,PDO::PARAM_STR);
-        $stmt->bindParam(4,$table,PDO::PARAM_STR|PDO::PARAM_INT);   // Found this from https://www.php.net/manual/en/pdostatement.bindparam.php in example #3
+        $stmt->bindParam(3,$rowMatch,PDO::PARAM_STR);
+        $stmt->bindParam(4,$values,PDO::PARAM_STR|PDO::PARAM_INT);   // Found this from https://www.php.net/manual/en/pdostatement.bindparam.php in example #3
         $stmt->execute();
         $data = $stmt->fetchAll();
         return $data;
