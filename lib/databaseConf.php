@@ -1,8 +1,8 @@
 <?php
 
 $databaseVars = array(
-	"ip" => "mysql:dbname=beansdb;host=10.9.98.190",
-	"username" => "Jake",
+	"ip" => "mysql:dbname=beansdb;host=localhost",
+	"username" => "root",
 	"password" => null,
 );
 
