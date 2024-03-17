@@ -1,7 +1,6 @@
 <?php
 class ProductOrder {
 	private $quantity;
-	private $product = new Product();
 
 	public function setQuantity($quantity) {
 		$this->quantity = $quantity;
