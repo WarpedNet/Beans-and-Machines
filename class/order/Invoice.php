@@ -6,7 +6,6 @@ class Invoice extends PaymentInfo
 {
     private $invoiceID;
     private $cost;
-    private $paymentInfo = new PaymentInfo;
 
     public function getInvoiceID()
     {
