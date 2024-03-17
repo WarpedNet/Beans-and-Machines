@@ -47,7 +47,7 @@ class Operations
     }
 
     public function updateData($table, $column, $newValue, $changeColumns, $rows) {
-        $pdo = $this->getConnection;
+        $pdo = $this->getConnection();
         $query = "UPDATE ? SET ?=? WHERE ?=?";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(1, $table, PDO::PARAM_STR);
@@ -59,7 +59,7 @@ class Operations
     }
 
     public function deleteData($table, $column, $rows) {
-        $pdo = $this->getConnection;
+        $pdo = $this->getConnection();
         $query = "DELETE FROM ? WHERE ?=?";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(1, $table, PDO::PARAM_STR);
