@@ -12,7 +12,7 @@
         <span class="title-left">
             <img src="Images/ChangeMe.jpg", width=150vw>
             <strong>Beans and Machines</strong>
-            <p class="title-links"><a href="">Products</a> | <a href="">About Us</a> | <a href="">Contact</a></p>
+            <p class="title-links"><a href="index.php">Products</a> | <a href="aboutUs.php">About Us</a> | <a href="contact.php">Contact</a></p>
         </span>
         <span class="title-right">
             <div class="title-buttons">

@@ -13,14 +13,16 @@
 	font-size: 1.5em;
 	vertical-align: top;
 }
+
 .title-left a {
 	text-decoration: none;
 }
-.title-left a:visited {
-	color: black;
-}
+
 .title-left a:hover {
 	color: red;
+}
+.title-left a:focus {
+	color: blue;
 }
 .title-right {
 	float: right;
