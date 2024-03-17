@@ -11,7 +11,7 @@ class Delivery
 
     public function setEstArrival($estArrival)
     {
-        $this->estArrival = estArrival;
+        $this->estArrival = $estArrival;
     }
 
     public function getEstArrival()
@@ -21,7 +21,7 @@ class Delivery
 
     public function setDeliveryCost($deliveryCost)
     {
-        $this->deliveryCost = deliveryCost;
+        $this->deliveryCost = $deliveryCost;
     }
 
     public function getDeliveryCost()
@@ -31,7 +31,7 @@ class Delivery
 
     public function setDeliveryMethod($deliveryMethod)
     {
-        $this->deliveryMethod = deliveryMethod;
+        $this->deliveryMethod = $deliveryMethod;
     }
 
     public function getDeliveryMethod()
@@ -41,7 +41,7 @@ class Delivery
 
     public function setDeliveryNotes($deliveryNotes)
     {
-        $this->deliveryNotes = deliveryNotes;
+        $this->deliveryNotes = $deliveryNotes;
     }
 
     public function getDeliveryNotes()
@@ -51,12 +51,22 @@ class Delivery
 
     public function setDeliveryAddress($deliveryAddress)
     {
-        $this->deliveryAddress = deliveryAddress;
+        $this->deliveryAddress = $deliveryAddress;
     }
 
     public function getDeliveryAddress()
     {
         return $this->deliveryAddress;
+    }
+
+    public function displayDelivery() {
+        return "
+        Est Arrival: $estArrival
+        DeliveryCost: $deliveryCost
+        DeliveryMethod: $deliveryMethod
+        DeliveryNotes: $deliveryNotes
+        DeliveryAddress: $deliveryAddress
+        ";
     }
 }
 

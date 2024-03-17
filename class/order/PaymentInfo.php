@@ -10,7 +10,7 @@ class PaymentInfo
 
     public function setCardNumber($cardNumber)
     {
-        $this->cardNumber = cardNumber;
+        $this->cardNumber = $cardNumber;
     }
 
     public function getCardNumber()
@@ -20,7 +20,7 @@ class PaymentInfo
 
     public function setCardExpDate($cardExpDate)
     {
-        $this->cardExpDate = cardExpDate;
+        $this->cardExpDate = $cardExpDate;
     }
 
     public function getCardExpDate()
@@ -30,7 +30,7 @@ class PaymentInfo
 
     public function setCardCVV($cardCVV)
     {
-        $this->cardCVV = cardCVV;
+        $this->cardCVV = $cardCVV;
     }
 
     public function getCardCVV()
@@ -40,12 +40,20 @@ class PaymentInfo
 
     public function setCardType($cardType)
     {
-        $this->cardType = cardType;
+        $this->cardType = $cardType;
     }
 
     public function getCardType()
     {
         return $this->cardType;
+    }
+    public function displayPaymentInfo() {
+        return "
+            CardNumber: $this->cardNumber
+            CardExpDate: $this->cardExpDate
+            CardCVV: $this->cardCVV
+            CardType: $this->cardType
+        ";
     }
 }
 

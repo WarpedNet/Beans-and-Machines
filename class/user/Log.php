@@ -9,17 +9,17 @@ class Log
 
     public function setTime($time)
     {
-        $this->time = time;
+        $this->time = $time;
     }
 
     public function getTime()
     {
-        return $this->time = time;
+        return $this->time;
     }
 
     public function setError($error)
     {
-        $this->error = error;
+        $this->error = $error;
     }
 
     public function getError()
@@ -29,12 +29,20 @@ class Log
 
     public function setInfo()
     {
-        $this->info = info;
+        $this->info = $info;
     }
 
     public function getInfo()
     {
         return $this->info;
+    }
+
+    public function displayLog() {
+        return "
+            Time: $this->time
+            Error: $this->error
+            Info: $this->info
+        ";
     }
 }
 

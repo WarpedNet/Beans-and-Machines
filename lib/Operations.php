@@ -2,7 +2,7 @@
 
 class Operations
 {
-    function getConnection()
+    private function getConnection()
     {
         $databaseConf = require "databaseConf.php";
 
@@ -13,17 +13,58 @@ class Operations
         );
         return $pdo;
     }
-    private function readData($column, $table)
-    {
+    public function createData($table, $values) {
+        $pdo = $this->getConnection();
+        $query = "INSERT INTO ? VALUES (?)";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(1, $table, PDO::PARAM_STR);
+        $stmt->bindParam(2, $values, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+
+    public function readAllData($column, $table) {
         $pdo =  $this->getConnection();
         $query = "SELECT ? FROM ?";
-        $stmt = $pdo ->prepare($query);
+        $stmt = $pdo->prepare($query);
         $stmt->bindParam(1,$column, PDO::PARAM_STR);
         $stmt->bindParam(2,$table,PDO::PARAM_STR);
         $stmt->execute();
         $data = $stmt->fetchAll();
+        return $data;   
+    }
+
+    public function readData($column, $table, $columnMatch, $rowMatch) {
+        $pdo =  $this->getConnection();
+        $query = "SELECT ? FROM ? WHERE ?=?";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(1,$column, PDO::PARAM_STR);
+        $stmt->bindParam(2,$table,PDO::PARAM_STR);
+        $stmt->bindParam(3,$table,PDO::PARAM_STR);
+        $stmt->bindParam(4,$table,PDO::PARAM_STR|PDO::PARAM_INT);   // Found this from https://www.php.net/manual/en/pdostatement.bindparam.php in example #3
+        $stmt->execute();
+        $data = $stmt->fetchAll();
         return $data;
-        
+    }
+
+    public function updateData($table, $column, $newValue, $changeColumns, $rows) {
+        $pdo = $this->getConnection;
+        $query = "UPDATE ? SET ?=? WHERE ?=?";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(1, $table, PDO::PARAM_STR);
+        $stmt->bindParam(2, $column, PDO::PARAM_STR);
+        $stmt->bindParam(3, $newValue, PDO::PARAM_STR|PDO::PARAM_INT);
+        $stmt->bindParam(4, $changeColumns, PDO::PARAM_STR);
+        $stmt->bindParam(5, $rows, PDO::PARAM_STR|PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function deleteData($table, $column, $rows) {
+        $pdo = $this->getConnection;
+        $query = "DELETE FROM ? WHERE ?=?";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(1, $table, PDO::PARAM_STR);
+        $stmt->bindParam(2, $column, PDO::PARAM_STR);
+        $stmt->bindParam(3, $rows, PDO::PARAM_STR|PDO::PARAM_INT);
     }
 
 }

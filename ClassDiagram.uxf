@@ -7,7 +7,7 @@
       <x>630</x>
       <y>100</y>
       <w>220</w>
-      <h>140</h>
+      <h>150</h>
     </coordinates>
     <panel_attributes>User
 transparency=0
@@ -19,7 +19,8 @@ bg=white
 -
 &lt;&lt;get/set&gt;&gt; -email: string
 &lt;&lt;get/set&gt;&gt; -password: string
-&lt;&lt;get/set&gt;&gt; -phoneNum: string</panel_attributes>
+&lt;&lt;get/set&gt;&gt; -phoneNum: string
+displayUser: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -28,7 +29,7 @@ bg=white
       <x>880</x>
       <y>100</y>
       <w>220</w>
-      <h>130</h>
+      <h>150</h>
     </coordinates>
     <panel_attributes>Administrator
 transparency=0
@@ -40,14 +41,15 @@ bg=white
 -
 &lt;&lt;get/set&gt;&gt; -adminID: int
 &lt;&lt;get/set&gt;&gt; -fName: string
-&lt;&lt;get/set&gt;&gt; -sName: string</panel_attributes>
+&lt;&lt;get/set&gt;&gt; -sName: string
+displayAdministrator: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>630</x>
-      <y>270</y>
+      <y>280</y>
       <w>220</w>
       <h>120</h>
     </coordinates>
@@ -59,7 +61,8 @@ bg=white
 -address: string
 -
 &lt;&lt;get/set&gt;&gt; -isMember: boolean
-&lt;&lt;get/set&gt;&gt; -address: string</panel_attributes>
+&lt;&lt;get/set&gt;&gt; -address: string
+displayCustomer: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -77,7 +80,7 @@ bg=white
     <id>Relation</id>
     <coordinates>
       <x>730</x>
-      <y>230</y>
+      <y>240</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -105,7 +108,7 @@ transparency=0
       <x>630</x>
       <y>500</y>
       <w>220</w>
-      <h>130</h>
+      <h>150</h>
     </coordinates>
     <panel_attributes>Product
 transparency=0
@@ -117,7 +120,8 @@ bg=white
 -
 &lt;&lt;get/set&gt;&gt; -productID: int
 &lt;&lt;get/set&gt;&gt; -productName: string
-&lt;&lt;get/set&gt;&gt; -stock: int</panel_attributes>
+&lt;&lt;get/set&gt;&gt; -stock: int
+displayProduct: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -126,7 +130,7 @@ bg=white
       <x>340</x>
       <y>520</y>
       <w>210</w>
-      <h>70</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>Product Order
 transparency=0
@@ -134,7 +138,8 @@ bg=white
 -
 -quantity: int
 -
-&lt;&lt;get/set&gt;&gt; -quantity: int</panel_attributes>
+&lt;&lt;get/set&gt;&gt; -quantity: int
+displayProductOrder: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -154,14 +159,14 @@ m2=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>840</x>
-      <y>380</y>
+      <y>390</y>
       <w>170</w>
-      <h>170</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;150.0</additional_attributes>
+    <additional_attributes>10.0;10.0;150.0;140.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -169,7 +174,7 @@ m2=1</panel_attributes>
       <x>340</x>
       <y>100</y>
       <w>210</w>
-      <h>170</h>
+      <h>180</h>
     </coordinates>
     <panel_attributes>PaymentInfo
 transparency=0
@@ -183,7 +188,8 @@ bg=white
 &lt;&lt;get/set&gt;&gt; cardNumber: int
 &lt;&lt;get/set&gt;&gt; cardExpDate: Date
 &lt;&lt;get/set&gt;&gt; cardCVV: int
-&lt;&lt;get/set&gt;&gt; cardType: string</panel_attributes>
+&lt;&lt;get/set&gt;&gt; cardType: string
+displayPaymentInfo: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -215,7 +221,8 @@ bg=white
 -cost: double
 -
 &lt;&lt;get/set&gt;&gt; -invoiceID: int
-&lt;&lt;get/set&gt;&gt; -cost: double</panel_attributes>
+&lt;&lt;get/set&gt;&gt; -cost: double
+displayInvoice: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -237,7 +244,7 @@ m2=1</panel_attributes>
       <x>340</x>
       <y>650</y>
       <w>210</w>
-      <h>200</h>
+      <h>210</h>
     </coordinates>
     <panel_attributes>Delivery
 transparency=0
@@ -253,21 +260,22 @@ bg=white
 &lt;&lt;get/set&gt;&gt; -deliveryCost: double
 &lt;&lt;get/set&gt;&gt; -deliveryMethod: string
 &lt;&lt;get/set&gt;&gt; -deliveryNotes: string
-&lt;&lt;get/set&gt;&gt; -deliveryAddress: string</panel_attributes>
+&lt;&lt;get/set&gt;&gt; -deliveryAddress: string
+displayDelivery: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>430</x>
-      <y>580</y>
+      <y>590</y>
       <w>40</w>
-      <h>90</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -300,7 +308,7 @@ bg=white
 &lt;&lt;get/set&gt;&gt; -time: DateTime
 &lt;&lt;get/set&gt;&gt; -error: Error
 &lt;&lt;get/set&gt;&gt; -info: string
--displayErrors: string</panel_attributes>
+-displayLog: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -388,26 +396,26 @@ m2=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>500</x>
-      <y>380</y>
+      <y>390</y>
       <w>150</w>
-      <h>160</h>
+      <h>150</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
 m2=✱</panel_attributes>
-    <additional_attributes>130.0;10.0;10.0;140.0</additional_attributes>
+    <additional_attributes>130.0;10.0;10.0;130.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>430</x>
-      <y>260</y>
-      <w>40</w>
-      <h>90</h>
+      <y>270</y>
+      <w>30</w>
+      <h>80</h>
     </coordinates>
-    <panel_attributes>lt=-
-m1=✱
-m2=1</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=-&gt;&gt;
+m1=
+m2=</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

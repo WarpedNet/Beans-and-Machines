@@ -9,7 +9,7 @@ class User
 
     public function setEmail($email)
     {
-        $this->email = email;
+        $this->email = $email;
     }
 
     public function getEmail()
@@ -19,22 +19,30 @@ class User
 
     public function setPassword($password)
     {
-        $this->password = password;
+        $this->password = $password;
     }
 
     public function getPassword()
     {
-        $this->password = password;
+       return $this->password;
     }
 
     public function setPhoneNum($phoneNum)
     {
-        $this->phoneNum = phoneNum;
+        $this->phoneNum = $phoneNum;
     }
 
     public function getPhoneNum()
     {
         return $this->phoneNum;
+    }
+
+    public function displayUser() {
+        return "
+            Email: $this->email
+            Password: $this->password
+            PhoneNum: $this->phoneNum
+        ";
     }
 }
 

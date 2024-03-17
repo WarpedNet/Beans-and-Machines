@@ -6,6 +6,7 @@ class Product
     private $productID;
     private $productName;
     private $stock;
+    private $cart = new Cart;
 
     public function setProductID($productID)
     {
@@ -36,8 +37,13 @@ class Product
     {
         return $this->stock;
     }
-}
-    public function getProduct() {
-        return readData("*", "Product");
+
+    public function displayProduct() {
+        return "
+            ProductID: $this->productID
+            ProductName: $this->productName
+            Stock: $this->stock
+        ";
     }
+}
 ?>

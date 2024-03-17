@@ -6,6 +6,7 @@ class Customer
 {
     private $isMember;
     private $address;
+
     public function getIsMember()
     {
         return $this->isMember;
@@ -27,4 +28,11 @@ class Customer
     {
         $this->address = $address;
     }
+    public function displayCustomer() {
+        return "
+            IsMember: $this->isMember
+            Address: $this->address
+        "
+    }
+        
 }
