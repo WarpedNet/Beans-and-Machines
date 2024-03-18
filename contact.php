@@ -2,7 +2,7 @@
 
 <?php require 'layout/header.php'; ?>
 
-<div class="main-content">
+<div class="main-content" align="center">
 	<h1 style="font-family:sans-serif;">Contact Us</h1>
 	<p style="font-family:sans-serif;">You can contact us by repeating our company name five times to a mirror. A carrier pigeon should appear at which point you can attach a message to it's leg to send to us. 
 	Throw the pigeon at full speed at a 42 degree angle above the horizon. You should hear a reply back from us within 5-10 minutes. 
