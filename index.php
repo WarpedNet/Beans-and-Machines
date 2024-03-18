@@ -24,12 +24,6 @@ foreach ($productData as $product) {
 	$productObjArr[] = $productObj;
 }
 
-foreach ($productObjArr as $product) {
-	if (isset($_POST[$product->getProductID()])) {
-		$cartObj->addToCart()
-	}
-}
-
 ?>
 <div class="main-content">
 	<table>
@@ -43,10 +37,6 @@ foreach ($productObjArr as $product) {
 			<tr>
 				<?php $product->displayProduct();?>
 				<td>
-					<form method="post">
-						<input type="submit" name="<?php echo $product->getProductID();?>" value="Add to cart"/>
-					</form>
-				</td>
 			</tr>
 		<?php } ?>
 	</table>
