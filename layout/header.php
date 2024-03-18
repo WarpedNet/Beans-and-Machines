@@ -20,7 +20,7 @@
                 <p>Cart</p>
             </div>
             <div class="title-buttons">
-                <a href=""><img src="Images/Icons/login.png", width=50vw></a>
+                <a href="login.php"><img src="Images/Icons/login.png", width=50vw></a>
                 <p>Log In</p>
             </div>
         </span>
