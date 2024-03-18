@@ -1,7 +1,7 @@
 <?php
 
 namespace user;
-class Administrator
+class Administrator extends User
 {
     private $adminID;
     private $fName;
