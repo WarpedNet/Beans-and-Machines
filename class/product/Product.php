@@ -10,7 +10,7 @@ class Product
 
     public function setProductID($productID)
     {
-        $this->$productID = $productID;
+        $this->productID = $productID;
     }
 
     public function getProductID()
@@ -20,7 +20,7 @@ class Product
 
     public function setProductName($productName)
     {
-        $this->$productName = $productName;
+        $this->productName = $productName;
     }
 
     public function getProductName()
@@ -51,7 +51,7 @@ class Product
             <td>$this->productID</td>
             <td>$this->productName</td>
             <td>$this->expiraryDate</td>
-            <td>$this->stock</td>;
+            <td>$this->stock</td>
             ";
     }
 }
