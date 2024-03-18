@@ -10,8 +10,7 @@
 </div>
 
 <?php
-	// echo $operations->readData("*", "product", "pId", 21);
-$operationsObj->readAllData("pName", "product");
+	echo $operationsObj->readAllData("lPassword", "logininfo");
 ?>
 
 <?php require 'layout/footer.php'; ?>

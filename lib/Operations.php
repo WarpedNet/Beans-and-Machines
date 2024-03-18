@@ -15,7 +15,7 @@ class Operations
     }
     public function createData($table, $values) {
         $pdo = $this->getConnection();
-        $query = "INSERT INTO ? VALUES (?)";
+        $query = 'INSERT INTO ? VALUES (?)';
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(1, $table, PDO::PARAM_STR);
         $stmt->bindParam(2, $values, PDO::PARAM_STR);
@@ -23,11 +23,12 @@ class Operations
     }
 
     public function readAllData($column, $table) {
-        $pdo =  $this->getConnection();;
-        $query = "SELECT ? FROM ?";
+        $pdo = $this->getConnection();
+        $query = "SELECT ? FROM logininfo;";
         $stmt = $pdo->prepare($query);
-        $stmt->bindParam(1,$column, PDO::PARAM_STR);
-        $stmt->bindParam(2,$table,PDO::PARAM_STR);
+        $stmt->bindParam(1, $column, PDO::PARAM_STR);
+        $stmt->bindParam(2, $table, PDO::PARAM_STR);
+        var_dump($stmt);
         $stmt->execute();
         $data = $stmt->fetchAll();
         return $data;   
