@@ -1,12 +1,12 @@
 <?php
-namespace product;
-require "../lib/Operations.php";
+namespace class\product;
 
 class Product
 {
     private $productID;
     private $productName;
     private $stock;
+    private $expiraryDate;
 
     public function setProductID($productID)
     {
@@ -38,12 +38,21 @@ class Product
         return $this->stock;
     }
 
+    public function setExpiraryDate($expiraryDate) {
+        $this->expiraryDate = $expiraryDate;
+    }
+
+    public function getExpiraryDate() {
+        return $this->expiraryDate;
+    }
+
     public function displayProduct() {
-        return "
-            ProductID: $this->productID
-            ProductName: $this->productName
-            Stock: $this->stock
-        ";
+        echo "
+            <td>$this->productID</td>
+            <td>$this->productName</td>
+            <td>$this->expiraryDate</td>
+            <td>$this->stock</td>;
+            ";
     }
 }
 ?>
