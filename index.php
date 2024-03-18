@@ -25,7 +25,8 @@ foreach ($productData as $product) {
 }
 
 ?>
-<div class="main-content">
+<div class="main-content" align="center">
+	<h1 style="font-family:sans-serif;">Products</h1>
 	<table>
 		<tr>
 			<th>Product ID</th>
