@@ -5,13 +5,14 @@
 
 require 'lib/CRUD Operations/ReadProducts.php';
 require 'class/product/Product.php';
+use class\product\Product as productObj;
 
 
 $readProductsObj = new readProducts();
-$productsObj = new class\product\Product();
+$object = new productObj;
 
 $productData = $readProductsObj->readData("*");
-var_dump($productData);
+var_dump($object);
 
 
 // $productsObj->setProductID(1)
