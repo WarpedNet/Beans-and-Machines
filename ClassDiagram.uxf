@@ -90,14 +90,21 @@ displayCustomer: string</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>890</x>
-      <y>540</y>
-      <w>120</w>
-      <h>30</h>
+      <x>870</x>
+      <y>510</y>
+      <w>160</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>Cart
 bg=white
 transparency=0
+-
+-productObjArr: string[ ]
+-
+addToCart: string[ ]
+getCart: string[ ]
+displayCart: string[ ]
+
 
 </panel_attributes>
     <additional_attributes/>
@@ -107,7 +114,7 @@ transparency=0
     <coordinates>
       <x>590</x>
       <y>510</y>
-      <w>220</w>
+      <w>200</w>
       <h>160</h>
     </coordinates>
     <panel_attributes>Product
@@ -146,7 +153,7 @@ displayProductOrder: string</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>800</x>
+      <x>780</x>
       <y>540</y>
       <w>110</w>
       <h>40</h>
@@ -161,13 +168,13 @@ m2=1</panel_attributes>
     <coordinates>
       <x>800</x>
       <y>400</y>
-      <w>170</w>
-      <h>160</h>
+      <w>120</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
 m2=1</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;140.0</additional_attributes>
+    <additional_attributes>10.0;10.0;100.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
