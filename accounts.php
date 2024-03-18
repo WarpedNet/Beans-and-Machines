@@ -4,9 +4,13 @@
 $user = "callum";
 $pass = "password";
 
+
 if (isset($_POST['submit'])){
-    header("Location: index.php");
-}
-else{
-    header("Location: login.php");
+    if (($_POST['user'] == $user) && ($_POST['passInput'] == $pass)) {
+        $_SESSION['pass'] = $user;
+        header("Location: index.php");
+        exit;
+    }
+    else
+        echo 'Incorrect Username or Password';
 }

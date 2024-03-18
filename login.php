@@ -1,6 +1,8 @@
 <link rel="stylesheet" type="text/css" href="CSS/index.css">
 
 <?php
+session_start();
+require 'layout/header.php';
  require "accounts.php";
  
 ?>
@@ -18,5 +20,4 @@
     
 </form>
 </html>
-<?php
-include "accounts.php";
+

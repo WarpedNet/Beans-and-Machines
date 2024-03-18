@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="CSS/index.css">
-<?php require 'layout/header.php'; ?>
+<?php
+require 'layout/header.php'; ?>
 
 <?php 
 
