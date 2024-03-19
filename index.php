@@ -32,7 +32,7 @@ if(array_key_exists('add', $_POST)) {
 function addEntry() {
 	$databaseConObj = new databaseCon();
 	$pdo = $databaseConObj->getConnection();
-	$query = 'INSERT INTO Product VALUES (29, "New+ Beans", "2031-12-28", 60)';
+	$query = 'INSERT INTO Product VALUES (30, "Jasper Beans", "2031-12-28", 53213)';
 	$stmt = $pdo->prepare($query);
 	$stmt->execute();
 }

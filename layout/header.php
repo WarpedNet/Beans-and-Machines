@@ -10,19 +10,21 @@
 <body>
     <header>
         <span class="title-left">
+            <!-- logo image -->
             <img src="Images/ChangeMe.jpg", width=150vw>
             <strong>Beans and Machines</strong>
             <p class="title-links"><a href="index.php">Products</a> | <a href="aboutUs.php">About Us</a> | <a href="contact.php">Contact</a></p>
         </span>
         <span class="title-right">
+            <!-- cart button -->
             <div class="title-buttons">
                 <a href="cart.php"><img src="Images/Icons/cart.png", width=50vw></a>
                 <p>Cart</p>
             </div>
+            <!-- login button -->
             <div class="title-buttons">
                 <a href="login.php"><img src="Images/Icons/login.png", width=50vw></a>
                 <p>Log In</p>
             </div>
         </span>
-        
     </header>
