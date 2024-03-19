@@ -7,21 +7,24 @@ $user = $_POST['userInput'];
 $pass = $_POST['passInput'];
 
 //creating a query to check if the username + password is in the database
-//$query = "SELECT * FROM logininfo where lPassword = '$pass' and lEmail = '$user'";
+$userquery = "SELECT * FROM logininfo where lPassword = '$pass' and lEmail = '$user'";
+$adminquery = "SELECT * FROM admin where isAdmin = 'true'";
 // this is a statement wow
-//stmt = exec($query) or die();
+$stmt = exec($userquery) && exec($adminquery) or die();
 
 
 if (isset($_POST['submit'])) {
-    if (($_SESSION['userInput'] == $user) && ($_SESSION['passInput'] == $pass)) {
+    if (($_SESSION['userInput'] == $user) && ($_SESSION['passInput'] == $pass) && (!$adminquery)) {
         $_SESSION['Username'] = $user;
         $_SESSION['Active'] = true;
         header("Location: index.php");
         exit;
     }
-    else {
-        echo "Incorrect Username or Password";
-        header("Location: login.php");
+    elseif (($_SESSION['userInput'] == $user) && ($_SESSION['passInput'] == $pass) && ($adminquery)) {
+        $_SESSION['Username'] =  $user;
+        $_SESSION['Active'] = true;
+        //header("Location: admin.php or whereever")
+        exit;
         
     }
 }
