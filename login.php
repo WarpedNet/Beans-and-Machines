@@ -1,9 +1,8 @@
 <link rel="stylesheet" type="text/css" href="CSS/index.css">
 
 <?php
-require 'layout/header.php';
-include 'accounts.php';
- 
+    require 'layout/header.php';
+    include 'accounts.php';
 ?>
 
 <html lang="en">
