@@ -2,21 +2,22 @@
 namespace class\product;
 
 class Cart {
-	private $productObjArr = array();
+	private $productArr = array();
 
-	public function addToCart($object) {
-		$this->productObjArr[] = $object;
+	public function addToCart($arr) {
+		$this->productArr[] = $arr;
 	}
 	public function removeFromCart($index) {
-		unset($this->productObjArr[index]);	// Got from https://www.php.net/manual/en/function.unset
+		unset($this->productArr[index]);	// Got from https://www.php.net/manual/en/function.unset
 	}
 	public function getCart() {
-		return $this->productObjArr;
+		return $this->productArr;
 	}
 	public function displayCart() {
-		foreach ($this->productObjArr as $product) { ?>
+		foreach ($this->productArr as $product) { ?>
 			<tr>
-				<?php $product->displayProduct();?>
+				<?php $product["obj"]->displayProduct();?>
+				<td> <?php echo array_column($this->getCart(), "quantity")[0];?> </td>
 			</tr> 
 		<?php }
 	}

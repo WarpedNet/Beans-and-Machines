@@ -8,7 +8,8 @@ if (!$_SESSION['Active']){
 
 <?php 
 require_once 'lib/GetProducts.php';
-require_once 'lib/GetCart.php';
+
+$_SESSION["Cart"] = array();
 
 // if (isset($_POST["cartMethod"])){
 // 	if ($_GET["cartMethod"] == "addToCart") {
@@ -19,14 +20,17 @@ require_once 'lib/GetCart.php';
 // 	}
 // }
 
-if (isset($_POST["addToCart"])) {
-	foreach ($_POST as $value) {
-		if (str_contains($value, "quantity")) {
-
-		}
+if (isset($_POST["sendToCart"])){
+	foreach ($_SESSION['productObjArr'] as $product) {
+		$_SESSION["Cart"][] = array(
+			"quantity" => $_POST["quantity".$product["pID"]],
+			"ID" => $product["pObj"]->getProductID(),
+			"name" => $product["pObj"]->getProductName(),
+			"stock" => $product["pObj"]->getStock(),
+			"expDate" => $product["pObj"]->getExpiraryDate()
+		);
 	}
 }
-
 
 ?>
 <?php require 'layout/header.php'; ?>
@@ -51,7 +55,7 @@ if (isset($_POST["addToCart"])) {
 			</tr>
 		<?php } ?>
 		</table>
-		<input type="submit" name="addToCart" value="AddToCart">
+		<input type="submit" name="sendToCart" value="AddToCart">
 	</form>
 </div>
 

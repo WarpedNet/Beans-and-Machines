@@ -2,20 +2,26 @@
 session_start();
 if (!$_SESSION['Active']){
     header("Location: login.php");
-    // exit;
+    exit;
 }
 ?>
 
 <?php 
-// require 'class/product/Cart.php';
-// use class\product\Cart as cartObj;
+require 'class/product/Cart.php';
+require 'class/product/Product.php';
+use class\product\Cart as cartObj;
+use class\product\Product as productObj;
 
-if (isset($_SESSION['Cart'])) {
-	$cartObj = $_SESSION['Cart'];
+$cartObj = new cartObj();
+
+foreach ($_SESSION["Cart"] as $product) {
+	$productObj = new productObj();
+	$productObj->setProductID($product["ID"]);
+	$productObj->setProductName($product["name"]);
+	$productObj->setStock($product["stock"]);
+	$productObj->setExpiraryDate($product["expDate"]);
+	$cartObj->addToCart(array("quantity" => $product["quantity"], "obj"=> $productObj));
 }
-
-
-
 ?>
 <link rel="stylesheet" type="text/css" href="CSS/index.css">
 <?php require 'layout/header.php'?>
@@ -27,8 +33,9 @@ if (isset($_SESSION['Cart'])) {
 			<th>Product</th>
 			<th>Expirary Date</th>
 			<th>Stock</th>
+			<th>Quantity</th>
 		</tr>
-		<?php $cartObj->displayCart() ?>
+		<?php $cartObj->displayCart();?>
 
 	</table>
 </div>
