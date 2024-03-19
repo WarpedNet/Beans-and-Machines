@@ -79,8 +79,3 @@ CREATE TABLE IF NOT EXISTS CustomerCart(
     PRIMARY KEY (cartID),
     FOREIGN KEY (cID) REFERENCES Customer(cID)
 );
-
-/* Inserting into Products Table */
-INSERT INTO Product VALUES(
-	75, "Beans", "2024-09-12", 114
-);
