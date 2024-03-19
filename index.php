@@ -29,6 +29,19 @@ foreach ($productData as $product) {
 	$productObjArr[] = $productObj;
 }
 
+if(array_key_exists('add', $_POST)) {
+	addEntry();
+	header("Location:index.php");
+}
+
+function addEntry() {
+	$databaseConObj = new databaseCon();
+	$pdo = $databaseConObj->getConnection();
+	$query = 'INSERT INTO Product VALUES (29, "New+ Beans", "2031-12-28", 60)';
+	$stmt = $pdo->prepare($query);
+	$stmt->execute();
+}
+
 ?>
 <div class="main-content" align="center">
 	<h1 style="font-family:sans-serif;">Products</h1>
@@ -46,6 +59,9 @@ foreach ($productData as $product) {
 			</tr>
 		<?php } ?>
 	</table>
+	<form method="post"> 
+    <input type="submit" name="add" class="button" value="Add" /> 
+</form> 
 </div>
 
 <?php require 'layout/footer.php'; ?>

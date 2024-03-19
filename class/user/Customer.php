@@ -2,7 +2,7 @@
 
 namespace user;
 
-class Customer
+class Customer extends User
 {
     private $isMember;
     private $address;
