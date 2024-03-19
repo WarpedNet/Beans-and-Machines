@@ -1,5 +1,10 @@
 <link rel="stylesheet" type="text/css" href="CSS/index.css">
 <?php
+session_start();
+if (!$_SESSION['Active']){
+    header("Location: login.php");
+    exit;
+}
 require 'layout/header.php'; ?>
 
 <?php 
