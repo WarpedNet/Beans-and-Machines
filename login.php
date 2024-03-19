@@ -12,8 +12,8 @@
     <div class="login-form">
         <h2>Log In or Create Account</h2>
         <form method="post" name="login-form" class="data">
-            <label for="userInput">Username:</label>
-            <input name="userInput" id="userInput" placeholder="Enter username..." required autofocus>
+            <label for="userInput">Enter Email Address:</label>
+            <input name="userInput" id="userInput" type="email" placeholder="Enter username..." required autofocus>
             
             <label for="passInput">Password:</label>
             <input name="passInput" id="passInput" type="password" placeholder="Enter Password" required>
