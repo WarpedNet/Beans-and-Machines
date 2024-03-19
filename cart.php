@@ -37,6 +37,7 @@ foreach ($_SESSION["Cart"] as $product) {
 		</tr>
 		<?php $cartObj->displayCart();?>
 	</table>
+	<a href="payment.php">Go to payment</a>
 </div>
 
 <?php require 'layout/footer.php'; ?>

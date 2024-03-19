@@ -2,7 +2,7 @@
 session_start();
 if (!$_SESSION['Active']){
     header("Location: login.php");
-    // exit;
+    exit;
 }
 ?>
 
@@ -36,6 +36,7 @@ if (isset($_POST["sendToCart"])){
 <?php require 'layout/header.php'; ?>
 <link rel="stylesheet" type="text/css" href="CSS/index.css">
 <div class="main-content" align="center">
+	<h1 style="font-family:sans-serif; color:red"><?php if(isset($_POST["sendToCart"])) {echo "Added to Cart!";}?></h1>
 	<h1 style="font-family:sans-serif;">Products</h1>
 	<form method="POST" action="index.php">
 		<table>
@@ -55,7 +56,7 @@ if (isset($_POST["sendToCart"])){
 			</tr>
 		<?php } ?>
 		</table>
-		<input type="submit" name="sendToCart" value="AddToCart">
+		<input type="submit" name="sendToCart" value="Add to Cart">
 	</form>
 </div>
 
