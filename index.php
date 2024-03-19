@@ -1,67 +1,58 @@
-<link rel="stylesheet" type="text/css" href="CSS/index.css">
 <?php
 session_start();
 if (!$_SESSION['Active']){
     header("Location: login.php");
-    exit;
+    // exit;
 }
-require 'layout/header.php'; ?>
+?>
 
 <?php 
-require 'lib/CRUD Operations/ReadProducts.php';
-require 'class/product/Product.php';
-require 'class/product/Cart.php';
-use class\product\Product as productObj;
-use class\product\Cart as cartObj;
+require_once 'lib/GetProducts.php';
+require_once 'lib/GetCart.php';
 
-$readProductsObj = new readProducts();
-$productObjArr = array();
-$cartObj = new cartObj();
+// if (isset($_POST["cartMethod"])){
+// 	if ($_GET["cartMethod"] == "addToCart") {
+// 		$productIndex = array_search(intval($_POST["product"]), array_column($_SESSION['productObjArr'], "pID"));	// https://www.php.net/manual/en/function.array-column
+// 		for ($iter = 0; $iter < intval($_POST['quantity']); $iter++) {
+// 			$_SESSION['Cart']->addToCart($_SESSION['productObjArr'][$productIndex]["pObj"]);
+// 		}
+// 	}
+// }
 
-$productData = $readProductsObj->readData("*");
+if (isset($_POST["addToCart"])) {
+	foreach ($_POST as $value) {
+		if (str_contains($value, "quantity")) {
 
-foreach ($productData as $product) {
-	$productObj = new productObj;
-	$productObj->setProductID($product[0]);
-	$productObj->setProductName($product[1]);
-	$productObj->setExpiraryDate($product[2]);
-	$productObj->setStock($product[3]);
-	$productObjArr[] = $productObj;
+		}
+	}
 }
 
-if(array_key_exists('add', $_POST)) {
-	addEntry();
-	header("Location:index.php");
-}
-
-function addEntry() {
-	$databaseConObj = new databaseCon();
-	$pdo = $databaseConObj->getConnection();
-	$query = 'INSERT INTO Product VALUES (30, "Jasper Beans", "2031-12-28", 53213)';
-	$stmt = $pdo->prepare($query);
-	$stmt->execute();
-}
 
 ?>
+<?php require 'layout/header.php'; ?>
+<link rel="stylesheet" type="text/css" href="CSS/index.css">
 <div class="main-content" align="center">
 	<h1 style="font-family:sans-serif;">Products</h1>
-	<table>
+	<form method="POST" action="index.php">
+		<table>
 		<tr>
 			<th>Product ID</th>
 			<th>Product</th>
 			<th>Expirary Date</th>
 			<th>Stock</th>
 		</tr>
-		<?php foreach ($productObjArr as $product) {?>
+		<?php 
+		foreach ($_SESSION['productObjArr'] as $product) { ?>
 			<tr>
-				<?php $product->displayProduct();?>
+				<?php $product["pObj"]->displayProduct();?>
 				<td>
+					<input type="number" name="<?php echo "quantity".$product["pID"];?>" value="quantity">
+				</td>
 			</tr>
 		<?php } ?>
-	</table>
-	<form method="post"> 
-    <input type="submit" name="add" class="button" value="Add" /> 
-</form> 
+		</table>
+		<input type="submit" name="addToCart" value="AddToCart">
+	</form>
 </div>
 
 <?php require 'layout/footer.php'; ?>
