@@ -1,14 +1,17 @@
 <?php
 
 namespace order;
-class Delivery
+
+class Delivery // delivery class
 {
+    // variables
     private $estArrival;
     private $deliveryCost;
     private $deliveryMethod;
     private $deliveryNotes;
     private $deliveryAddress;
 
+    // set and get functions
     public function setEstArrival($estArrival)
     {
         $this->estArrival = $estArrival;
@@ -59,6 +62,7 @@ class Delivery
         return $this->deliveryAddress;
     }
 
+    // display function
     public function displayDelivery() {
         return "
         Est Arrival: $this->estArrival

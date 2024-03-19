@@ -1,14 +1,16 @@
+<!-- including css -->
 <link rel="stylesheet" type="text/css" href="CSS/index.css">
 
+<!-- setting the header at the top of the page -->
 <?php
     require 'layout/header.php';
     include 'accounts.php';
 ?>
 
+<!-- displaying login popup -->
 <html lang="en">
     <div class="login-form">
         <h2>Log In or Create Account</h2>
-
         <form method="post" name="login-form" class="data">
             <label for="userInput">Username:</label>
             <input name="userInput" id="userInput" placeholder="Enter username..." required autofocus>

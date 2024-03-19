@@ -2,11 +2,13 @@
 
 namespace user;
 
-class Customer extends User
+class Customer extends User // customer class
 {
+    // variables
     private $isMember;
     private $address;
 
+    // set and get functions
     public function getIsMember()
     {
         return $this->isMember;
@@ -28,6 +30,8 @@ class Customer extends User
     {
         $this->address = $address;
     }
+
+    // display function
     public function displayCustomer() {
         return "
             IsMember: $this->isMember

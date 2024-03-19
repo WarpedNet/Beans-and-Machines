@@ -1,12 +1,15 @@
 <?php
 
 namespace user;
-class Log
+
+class Log // log class
 {
+    // variables
     private $time;
     private $error;
     private $info;
 
+    // set and get functions
     public function setTime($time)
     {
         $this->time = $time;
@@ -37,6 +40,7 @@ class Log
         return $this->info;
     }
 
+    // display function
     public function displayLog() {
         return "
             Time: $this->time

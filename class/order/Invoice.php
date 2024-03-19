@@ -2,11 +2,13 @@
 
 namespace order;
 
-class Invoice extends PaymentInfo
+class Invoice extends PaymentInfo // invoice class
 {
+    // variables
     private $invoiceID;
     private $cost;
 
+    // set and get functions
     public function getInvoiceID()
     {
         return $this->invoiceID;
@@ -25,6 +27,7 @@ class Invoice extends PaymentInfo
         $this->cost = $cost;
     }
 
+    // display function
     public function displayInvoice() {
         return "InvoiceID: $this->invoiceID\n"+$this->displayPaymentInfo();
     }

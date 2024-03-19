@@ -1,12 +1,15 @@
 <?php
 
 namespace user;
-class Administrator extends User
+
+class Administrator extends User // admin class
 {
+    // variables
     private $adminID;
     private $fName;
     private $sName;
 
+    // set and get functions
     public function setAdminID($adminID)
     {
         $this->adminID = $adminID;
@@ -37,6 +40,7 @@ class Administrator extends User
         return $this->sName;
     }
 
+    // display function
     public function displayAdministrator() {
         return "
         AdminID: $this->adminID

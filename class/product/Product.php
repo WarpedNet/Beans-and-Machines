@@ -1,13 +1,15 @@
 <?php
 namespace class\product;
 
-class Product
+class Product // product class
 {
+    // variables
     private $productID;
     private $productName;
     private $stock;
     private $expiraryDate;
 
+    // set and get functions
     public function setProductID($productID)
     {
         $this->productID = $productID;
@@ -46,6 +48,7 @@ class Product
         return $this->expiraryDate;
     }
 
+    // display function
     public function displayProduct() {
         echo "
             <td>$this->productID</td>

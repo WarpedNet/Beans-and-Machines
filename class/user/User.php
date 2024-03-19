@@ -1,12 +1,15 @@
 <?php
 
 namespace user;
-class User
+
+class User // user class
 {
+    // variables
     private $email;
     private $password;
     private $phoneNum;
 
+    // set and get functions
     public function setEmail($email)
     {
         $this->email = $email;
@@ -37,6 +40,7 @@ class User
         return $this->phoneNum;
     }
 
+    // display method
     public function displayUser() {
         return "
             Email: $this->email

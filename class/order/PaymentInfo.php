@@ -1,13 +1,15 @@
 <?php
 
 namespace order;
-class PaymentInfo
+class PaymentInfo // payment info class
 {
+    // variables
     private $cardNumber;
     private $cardExpDate;
     private $cardCVV;
     private $cardType;
 
+    // set and get functions
     public function setCardNumber($cardNumber)
     {
         $this->cardNumber = $cardNumber;
@@ -47,6 +49,8 @@ class PaymentInfo
     {
         return $this->cardType;
     }
+
+    // display function
     public function displayPaymentInfo() {
         return "
             CardNumber: $this->cardNumber

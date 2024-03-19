@@ -1,8 +1,13 @@
 <?php
+
 namespace order;
-class ProductOrder {
+
+class ProductOrder // product order class
+{
+	// variables
 	private $quantity;
 
+	// set and get functions
 	public function setQuantity($quantity) {
 		$this->quantity = $quantity;
 	}
@@ -11,6 +16,7 @@ class ProductOrder {
 		return $this->quantity;
 	}
 
+	// display function
 	public function displayProductOrder() {
 		return "
 			$this->quantity
