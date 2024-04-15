@@ -9,7 +9,7 @@ function Create($table, $newData) {
 	try {
 		require_once "src/DBconnect.php";
 		
-		$query = sprintf("INSERT INTO %s (%s) values (%s)", $table, implode(", ", array_keys($newData)), ":".implode(", :", array_keys($newData)));
+		$query = sprintf("INSERT INTO %s (%s) values (%s);", $table, implode(", ", array_keys($newData)), ":".implode(", :", array_keys($newData)));
 
 		$statement = $connection->prepare($query);
 		$statement->execute($newData);
