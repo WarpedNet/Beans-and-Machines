@@ -7,20 +7,13 @@ if (!$_SESSION['Active']){
 ?>
 
 <?php 
-	function ReadAll($table) {
-		require_once "src/DBconnect.php";
-
-		$query = sprintf("SELECT * FROM %s;", escape($table));
-
-		$statement = $connection->prepare($query);
-		$statement->execute();
-		return $statement->fetchAll();
-	}
+	
 ?>
 
 <?php require 'layout/header.php'; ?>
 <link rel="stylesheet" type="text/css" href="CSS/index.css">
 <div class="main-content" align="center">
+	<h1 style="font-family:sans-serif; color:red"><?php if(isset($_POST["sendToCart"])) {echo "Added to Cart!";}?></h1>
 	<h1 style="font-family:sans-serif;">Products</h1>
 	<form method="POST" action="index.php">
 
