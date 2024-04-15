@@ -1,9 +1,8 @@
 <?php
 session_start();
 require "lib/CRUD Operations/readUserData.php";
-//usernames & passwords? IDK I'll just use this as a test
-//this will be used for sending account info to the database
-//thank you to "login with sessions v4.pdf" for teaching me this
+//usernames & passwords will be stored
+//to compare with the accounts in the database
 if (isset($_POST['userInput']) && isset($_POST['passInput'])) {
     $user = $_POST['userInput'];
     $pass = $_POST['passInput'];
