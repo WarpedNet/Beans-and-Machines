@@ -1,12 +1,6 @@
 <!-- including css -->
 <link rel="stylesheet" type="text/css" href="CSS/index.css">
 
-<!-- setting the header at the top of the page -->
-<?php
-   
-    include 'accounts.php';
-   //require (filepath to create file)
-?>
 
 <!-- I'm going to leave the method to register here -->
 <?php 
@@ -19,7 +13,7 @@ if (isset($_POST['submit'])){
                 "username" => escape($_POST['userInput']),
                 "password" => escape($_POST['passInput'])
         );
-        $statement = sprintf("INSERT INTO %s (%s) values (%s)","logininfo",
+        $statement = sprintf("INSERT INTO %s (%s) values (%s)","users",
         implode(", ", array_keys($new_user)),
         ":" . implode(", :",array_keys($new_user)));
         $prepared = $connection->prepare($statement);
