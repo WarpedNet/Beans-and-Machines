@@ -1,35 +1,50 @@
 <!-- including css -->
 <link rel="stylesheet" type="text/css" href="CSS/index.css">
 
+<!-- setting the header at the top of the page -->
+<?php
+require_once 'src/DBconnect.php';
+   session_start();
+   if (session_status() == PHP_SESSION_ACTIVE){
+       header("location: index.php");
+   }
+   exit;
+//method for logging in
+//
+$stmt = "SELECT username, password from users WHERE username = ? AND password = ?";
+$query = $connection->prepare($stmt);
+$query->bind_param('s',$_POST['userInput'],'s',$_POST['passInput']);
+$query->execute();
+$query->store_result();
 
-<!-- I'm going to leave the method to register here -->
-<?php 
-if (isset($_POST['submit'])){
-    try {
-        require_once 'src/DBconnect.php';
-        require 'src/common.php';
-        
-        $new_user = array(
-                "username" => escape($_POST['userInput']),
-                "password" => escape($_POST['passInput'])
-        );
-        $statement = sprintf("INSERT INTO %s (%s) values (%s)","users",
-        implode(", ", array_keys($new_user)),
-        ":" . implode(", :",array_keys($new_user)));
-        $prepared = $connection->prepare($statement);
-        $prepared->execute($new_user);
-        
-    }
-    catch (PDOException $e){
-        echo $statement . "<br>" . $e->getMessage();
-    }
-}
-// this if statement should check if the account exists, kinda
-if (isset($_POST['submit']) && $statement){
-    echo 'Welcome '. $new_user['username'];
-}
 
+ if ($query->num_rows > 0){
+     $query->bind_result($username,$password);
+     $query->fetch();
+     //verifying password: https://www.php.net/manual/en/function.password-verify.php
+     if (password_verify($_POST['passInput'],$password)){
+         $_SESSION['Active'] == true;
+         $_SESSION['userInput'] = $_POST['userInput'];
+         header("location: index.php");
+     }
+     else {
+         echo "Incorrect Details.";
+     }
+ } 
+ else{
+     echo "Incorrect Details.";
+ }
+  
+  
+  
+   
+   
+   
 ?>
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">

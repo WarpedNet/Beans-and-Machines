@@ -69,14 +69,14 @@ if (isset($_POST['submit']) && $statement){
 <!-- displaying login popup -->
 <html lang="en">
 <div class="login-form">
-    <h2>Log In or Create Account</h2>
+    <h2>Create Account</h2>
     <form method="post" name="login-form" class="data">
         <label for="userInput">Enter Username:</label>
         <input name="userInput" id="userInput" type="text" placeholder="Enter username..." required autofocus>
 
         <label for="passInput">Password:</label>
         <input name="passInput" id="passInput" type="password" placeholder="Enter Password" required>
-        <button name="submit" value="login" type="submit">Login</button>
+        <button name="submit" value="login" type="submit">Register</button>
     </form>
 </div>
 </html>
