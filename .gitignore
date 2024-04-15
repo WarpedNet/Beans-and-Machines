@@ -1,2 +1,3 @@
 lib/databaseConf.php
 lib/CRUD Operations/databaseConf.php
+src/config.php
