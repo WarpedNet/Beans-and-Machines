@@ -2,7 +2,7 @@
 
 // connecting to the database using local host
 $databaseVars = array(
-	"ip" => "mysql:dbname=beansdb;host=localhost",
+	"ip" => "mysql:dbname=mydb;host=localhost",
 	"username" => "root",
 	"password" => null,
 );
