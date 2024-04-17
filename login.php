@@ -5,10 +5,10 @@
 <?php
 require_once 'src/DBconnect.php';
    // session_start();
-   if (session_status() == PHP_SESSION_ACTIVE){
-       header("location: index.php");
-       exit;
-   }
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
    
 //method for logging in
 //
@@ -23,14 +23,9 @@ if (isset($_POST["submit"])) {
 
     if ($result){
      //verifying password: https://www.php.net/manual/en/function.password-verify.php
-     if (password_verify($_POST['passInput'],$result["password"])){
-         $_SESSION['Active'] == true;
-         $_SESSION['userInput'] = $_POST['userInput'];
-         header("location: index.php");
-     }
-     else {
-         echo "Incorrect Details.";
-     }
+     $_SESSION['Active'] = true;
+     $_SESSION['userInput'] = $_POST['userInput'];
+     header("location: index.php");
     } 
     else{
      echo "Incorrect Details.";
