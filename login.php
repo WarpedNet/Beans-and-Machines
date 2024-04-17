@@ -12,15 +12,16 @@ require_once 'src/DBconnect.php';
    
 //method for logging in
 //
-$stmt = "SELECT username, password from users WHERE username = :username AND password = :password";
-$query = $connection->prepare($stmt);
-$query->bindParam(":username", $_POST['userInput'], PDO::PARAM_STR);
-$query->bindParam(":password", $_POST['passInput'], PDO::PARAM_STR);
-$query->execute();
-$result = $query->fetch(PDO::FETCH_ASSOC);
+if (isset($_POST["submit"])) {
+    $stmt = "SELECT username, password from users WHERE username = :username AND password = :password";
+    $query = $connection->prepare($stmt);
+    $query->bindParam(":username", $_POST['userInput'], PDO::PARAM_STR);
+    $query->bindParam(":password", $_POST['passInput'], PDO::PARAM_STR);
+    $query->execute();
+    $result = $query->fetch(PDO::FETCH_ASSOC);
 
 
- if ($result){
+    if ($result){
      //verifying password: https://www.php.net/manual/en/function.password-verify.php
      if (password_verify($_POST['passInput'],$result["password"])){
          $_SESSION['Active'] == true;
@@ -30,15 +31,12 @@ $result = $query->fetch(PDO::FETCH_ASSOC);
      else {
          echo "Incorrect Details.";
      }
- } 
- else{
+    } 
+    else{
      echo "Incorrect Details.";
- }
+    }
+}
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
