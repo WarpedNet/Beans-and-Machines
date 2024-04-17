@@ -34,8 +34,16 @@ if($_SESSION['Active'] == false){ /* Redirects user to login.php if not logged i
             </div>
             <!-- login button -->
             <div class="title-buttons">
-                
+<!--                 <?php
+                if (isset($_SESSION["Active"]) && $_SESSION["Active"] == true) {
+                    ?> <a href="location.href='logout.php'"><img src="Images/Icons/login.png", width=50vw></a> <?php
+                }
+                else { ?>
+                    <a href="login.php"><img src="Images/Icons/login.png", width=50vw></a>
+                <?php } ?> -->
                 <a href="login.php"><img src="Images/Icons/login.png", width=50vw></a>
+                
+                
                 <p>Log In</p>
             </div>
         </span>

@@ -12,16 +12,19 @@ if (isset($_POST['submit'])){
     try {
         require_once 'src/DBconnect.php';
         require 'src/common.php';
+        require_once 'lib/pass-verify.php';
+        if (passwordVerify(escape($_POST["passInput"]))) {
 
-        $new_user = array(
-            "username" => escape($_POST['userInput']),
-            "password" => escape($_POST['passInput'])
-        );
-        $statement = sprintf("INSERT INTO %s (%s) values (%s)","users",
-            implode(", ", array_keys($new_user)),
-            ":" . implode(", :",array_keys($new_user)));
-        $prepared = $connection->prepare($statement);
-        $prepared->execute($new_user);
+            $new_user = array(
+                "username" => escape($_POST['userInput']),
+                "password" => escape($_POST['passInput'])
+            );
+            $statement = sprintf("INSERT INTO %s (%s) values (%s)","users",
+                implode(", ", array_keys($new_user)),
+                ":" . implode(", :",array_keys($new_user)));
+            $prepared = $connection->prepare($statement);
+            $prepared->execute($new_user);
+        }
 
     }
     catch (PDOException $e){
@@ -29,9 +32,9 @@ if (isset($_POST['submit'])){
     }
 }
 // this if statement should check if the account exists, kinda
-if (isset($_POST['submit']) && $statement){
+// if (isset($_POST['submit']) && $statement){
 
-}
+// }
 
 ?>
 <!DOCTYPE html>
