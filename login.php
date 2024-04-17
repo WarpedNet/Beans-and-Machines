@@ -77,6 +77,7 @@ if (isset($_POST["submit"])) {
             <input name="passInput" id="passInput" type="password" placeholder="Enter Password" required>
             <br>
             <button name="submit" value="login" type="submit">Login</button>
+            <button name="submit" value="logout" type="submit" onclick="location.href='logout.php'">Logout</button>
             <button name="register" value="register" onclick="location.href='register.php'">Register</button>
         </form>
     </div>
