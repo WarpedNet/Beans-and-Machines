@@ -4,25 +4,25 @@
 <!-- setting the header at the top of the page -->
 <?php
 require_once 'src/DBconnect.php';
-   session_start();
+   // session_start();
    if (session_status() == PHP_SESSION_ACTIVE){
        header("location: index.php");
+       exit;
    }
-   exit;
+   
 //method for logging in
 //
-$stmt = "SELECT username, password from users WHERE username = ? AND password = ?";
+$stmt = "SELECT username, password from users WHERE username = :username AND password = :password";
 $query = $connection->prepare($stmt);
-$query->bind_param('s',$_POST['userInput'],'s',$_POST['passInput']);
+$query->bindParam(":username", $_POST['userInput'], PDO::PARAM_STR);
+$query->bindParam(":password", $_POST['passInput'], PDO::PARAM_STR);
 $query->execute();
-$query->store_result();
+$result = $query->fetch(PDO::FETCH_ASSOC);
 
 
- if ($query->num_rows > 0){
-     $query->bind_result($username,$password);
-     $query->fetch();
+ if ($result){
      //verifying password: https://www.php.net/manual/en/function.password-verify.php
-     if (password_verify($_POST['passInput'],$password)){
+     if (password_verify($_POST['passInput'],$result["password"])){
          $_SESSION['Active'] == true;
          $_SESSION['userInput'] = $_POST['userInput'];
          header("location: index.php");
@@ -34,12 +34,6 @@ $query->store_result();
  else{
      echo "Incorrect Details.";
  }
-  
-  
-  
-   
-   
-   
 ?>
 
 
