@@ -76,6 +76,7 @@ if (isset($_POST["submit"])) {
             <label for="passInput">Password:</label>
             <input name="passInput" id="passInput" type="password" placeholder="Enter Password" required>
             <button name="submit" value="login" type="submit">Login</button>
+            <button name="register" value="register" onclick="location.href='register.php'">Register</button>
         </form>
     </div>
 </html>
