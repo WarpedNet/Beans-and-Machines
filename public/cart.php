@@ -7,8 +7,8 @@ if (!$_SESSION['Active']){
 ?>
 
 <?php 
-require 'class/product/Cart.php';
-require 'class/product/Product.php';
+require '../class/product/Cart.php';
+require '../class/product/Product.php';
 use class\product\Cart as cartObj;
 use class\product\Product as productObj;
 
@@ -23,8 +23,8 @@ foreach ($_SESSION["Cart"] as $product) {
 	$cartObj->addToCart(array("quantity" => $product["quantity"], "obj"=> $productObj));
 }
 ?>
-<link rel="stylesheet" type="text/css" href="CSS/index.css">
-<?php require 'layout/header.php'?>
+<link rel="stylesheet" type="text/css" href="../CSS/index.css">
+<?php require '../layout/header.php'?>
 <div class="main-content" align="center">
 	<h1 style="font-family:sans-serif;">Cart</h1>
 	<table>
@@ -40,4 +40,4 @@ foreach ($_SESSION["Cart"] as $product) {
 	<a href="payment.php">Go to payment</a>
 </div>
 
-<?php require 'layout/footer.php'; ?>
+<?php require '../layout/footer.php'; ?>

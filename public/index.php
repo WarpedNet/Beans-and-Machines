@@ -10,7 +10,7 @@ if (!$_SESSION['Active']){
 
 <?php 
 	function ReadAll($table) {
-		require_once "src/DBconnect.php";
+		require_once "../src/DBconnect.php";
 
 		$query = sprintf("SELECT * FROM %s;", escape($table));
 
@@ -20,8 +20,8 @@ if (!$_SESSION['Active']){
 	}
 ?>
 
-<?php require 'layout/header.php'; ?>
-<link rel="stylesheet" type="text/css" href="CSS/index.css">
+<?php require '../layout/header.php'; ?>
+<link rel="stylesheet" type="text/css" href="../CSS/index.css">
 <div class="main-content" align="center">
 	<h1 style="font-family:sans-serif;">Products</h1>
 	<form method="POST" action="index.php">
@@ -30,4 +30,4 @@ if (!$_SESSION['Active']){
 	</form>
 </div>
 
-<?php require 'layout/footer.php'; ?>
+<?php require '../layout/footer.php'; ?>

@@ -1,61 +1,93 @@
 <?php
-namespace class\product;
-
-class Product // product class
+class product
 {
     // variables
-    private $productID;
     private $productName;
-    private $stock;
-    private $expiraryDate;
+    private $productDesc;
+    private $productAge;
+    private $productVendor;
+    private $productPrice;
 
     // set and get functions
-    public function setProductID($productID)
-    {
-        $this->productID = $productID;
-    }
 
-    public function getProductID()
-    {
-        return $this->productID;
-    }
-
-    public function setProductName($productName)
+    public function setName($productName)
     {
         $this->productName = $productName;
     }
 
-    public function getProductName()
+    public function getName()
     {
         return $this->productName;
     }
-
-    public function setStock($stock)
-    {
-        $this->stock = $stock;
+    public function setDesc($productDesc) {
+        $this->productDesc = $productDesc;
+    }
+    public function getDesc($productDesc) {
+        return $this->productDesc;
     }
 
-    public function getStock()
-    {
-        return $this->stock;
+    public function setAge($productAge) {
+        $this->productAge = $productAge;
     }
 
-    public function setExpiraryDate($expiraryDate) {
-        $this->expiraryDate = $expiraryDate;
+    public function getAge($productAge) {
+        return $this->productAge;
     }
-
-    public function getExpiraryDate() {
-        return $this->expiraryDate;
+    public function setVendor($productVendor) {
+        $this->productVendor = $productVendor;
+    }
+    public function getVendor() {
+        return $this->productVendor;
+    }
+    public function setPrice($productPrice) {
+        $this->productPrice = $productPrice;
+    }
+    public function getPrice() {
+        return $this->productPrice;
     }
 
     // display function
     public function displayProduct() {
         echo "
-            <td>$this->productID</td>
-            <td>$this->productName</td>
-            <td>$this->expiraryDate</td>
-            <td>$this->stock</td>
+            $this->productName\n
+            $this->productDesc\n
+            $this->productAge\n
+            $this->productVendor\n
+            $this->productPrice\n
             ";
+    }
+    public function getProductFromDB($productName) {
+
+    }
+    public function sendProductToDB() {
+        try {
+            require_once '../src/DBconnect.php';
+            require_once '../class/validation.php';
+
+            $valObj = new validation();
+            $connection = DBconnect();
+
+            $new_product = array(
+                "productName"   => $valObj->escape($this->productName),
+                "productDesc"   => $valObj->escape($this->productDesc),
+                "productAge"    => $valObj->escape($this->productAge),
+                "productVendor" => $valObj->escape($this->productVendor),
+                "productPrice"  => $valObj->escape($this->productPrice)
+            );
+
+            $query = sprintf(
+                "INSERT INTO products (%s) values (%s)",
+                implode(", ", array_keys($new_product)),
+                ":" . implode(", :", array_keys($new_product))
+            );
+
+            return $connection->prepare($query)->execute($new_product);
+
+        }
+        catch (PDOException $err) {
+            echo $query . "<br>" . $err->getMessage();
+        }
+
     }
 }
 ?>
