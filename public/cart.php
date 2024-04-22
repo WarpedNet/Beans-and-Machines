@@ -1,32 +1,46 @@
 <?php
-session_start();
-if (!$_SESSION['Active']){
-    header("Location: login.php");
-    exit;
-}
+	// starting the session
+	session_start();
+
+	// if the user is not logged in, send them to login page
+	if (!$_SESSION['Active']){
+	    header("Location: login.php");
+	    exit;
+	}
 ?>
 
 <?php 
-require '../class/product/Cart.php';
-require '../class/product/Product.php';
-use class\product\Cart as cartObj;
-use class\product\Product as productObj;
+	// adding cart and product classes
+	require '../class/product/Cart.php';
+	require '../class/product/Product.php';
+	use class\product\Cart as cartObj;
+	use class\product\Product as productObj;
 
-$cartObj = new cartObj();
+	// creating a cart object
+	$cartObj = new cartObj();
 
-foreach ($_SESSION["Cart"] as $product) {
-	$productObj = new productObj();
-	$productObj->setProductID($product["ID"]);
-	$productObj->setProductName($product["name"]);
-	$productObj->setStock($product["stock"]);
-	$productObj->setExpiraryDate($product["expDate"]);
-	$cartObj->addToCart(array("quantity" => $product["quantity"], "obj"=> $productObj));
-}
+	// adding product objects to cart object
+	foreach ($_SESSION["Cart"] as $product) {
+		$productObj = new productObj();
+		$productObj->setProductID($product["ID"]);
+		$productObj->setProductName($product["name"]);
+		$productObj->setStock($product["stock"]);
+		$productObj->setExpiraryDate($product["expDate"]);
+		$cartObj->addToCart(array("quantity" => $product["quantity"], "obj"=> $productObj));
+	}
 ?>
+
+<!-- stylesheet -->
 <link rel="stylesheet" type="text/css" href="../CSS/index.css">
-<?php require '../layout/header.php'?>
+
+<?php
+	// adding the header to the page
+	require '../layout/header.php';
+?>
+
 <div class="main-content" align="center">
 	<h1 style="font-family:sans-serif;">Cart</h1>
+	<!-- table for displaying information on products -->
 	<table>
 		<tr>
 			<th>Product ID</th>
@@ -35,9 +49,16 @@ foreach ($_SESSION["Cart"] as $product) {
 			<th>Stock</th>
 			<th>Quantity</th>
 		</tr>
-		<?php $cartObj->displayCart();?>
+		<?php
+			// sending cart object to display cart function
+			$cartObj->displayCart();
+		?>
 	</table>
+	<!-- link for accessing payment page -->
 	<a href="payment.php">Go to payment</a>
 </div>
 
-<?php require '../layout/footer.php'; ?>
+<?php
+	// adding the footer to the bottom of the page
+	require '../layout/footer.php';
+?>

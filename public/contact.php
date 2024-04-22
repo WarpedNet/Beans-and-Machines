@@ -2,7 +2,9 @@
 <link rel="stylesheet" type="text/css" href="../CSS/index.css">
 
 <!-- setting the header at the top of the page -->
-<?php require '../layout/header.php'; ?>
+<?php
+	require '../layout/header.php';
+?>
 
 <!-- displaying some information on the company -->
 <div class="main-content" align="center">
@@ -12,4 +14,6 @@
 </div>
 
 <!-- setting the footer at the bottom of the page -->
-<?php require '../layout/footer.php'; ?>
+<?php
+	require '../layout/footer.php';
+?>
