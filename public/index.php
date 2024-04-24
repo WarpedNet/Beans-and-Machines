@@ -24,12 +24,21 @@
 		$indexKey = $_GET["key"];
 
 		if (preg_match("/\d/", $indexKey) && $indexKey <= count($productArray) && $indexKey >=0) {
-			$_SESSION["Cart"][] = array(
-				"id" 	   => $productArray[$indexKey]["id"],
-				"name"     => $productArray[$indexKey]["productName"],
-				"price"    => $productArray[$indexKey]["productPrice"],
-				"stock"    => $productArray[$indexKey]["productStock"],
-			);
+			if (!isset($_SESSION["Cart"][$indexKey])) {
+				$_SESSION["Cart"][$indexKey] = array(
+					"id" 	  	=> $productArray[$indexKey]["id"],
+					"name"    	=> $productArray[$indexKey]["productName"],
+					"price"   	=> $productArray[$indexKey]["productPrice"],
+					"stock"   	=> $productArray[$indexKey]["productStock"],
+					"quantity"	=> 1
+				);
+			}
+			else {
+				$_SESSION["Cart"][$indexKey]["quantity"]++;
+			}
+			// Put code here to display "Added to cart" or whatever
+			//
+			//
 		}
 
 	}
@@ -57,7 +66,6 @@
 				<th>Product Vendor |</th>
 				<th>Product Price |</th>
 				<th>Product Stock</th>
-				<th>Quantity</th>
 			</tr>
 			<tr>
 				<td></td>
