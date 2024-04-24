@@ -1,10 +1,9 @@
 <?php
 // Sending registration data to database
 if (isset($_POST['submit'])){
-    require_once "../class/validation.php";
-    $valObj = new validation();
+    require_once "../src/validation.php";
 
-    if (!$valObj->checkUsername($_POST['userInput'])) {
+    if (!checkUsername($_POST['userInput'])) {
         require_once '../class/user/user.php';
         $usrObj = new user();
         $usrObj->setUsername($_POST["userInput"]);

@@ -17,6 +17,23 @@
 	$productObj = new product();
 	$productArray = $productObj->getAllProducts();
 
+	// Checking that the key sent is a number & is less than the array & thats its greater than 0
+	// https://www.php.net/manual/en/function.preg-match
+	if (isset($_GET["key"])) {
+
+		$indexKey = $_GET["key"];
+
+		if (preg_match("/\d/", $indexKey) && $indexKey <= count($productArray) && $indexKey >=0) {
+			$_SESSION["Cart"][] = array(
+				"id" 	=> $productArray[$indexKey]["id"],
+				"name"  => $productArray[$indexKey]["productName"]
+				"price" => $productArray[$indexKey]["productPrice"],
+				"stock" => $productArray[$indexKey]["productStock"]
+			);
+		}
+
+	}
+
 ?>
 
 <?php
@@ -45,7 +62,7 @@
 				<td></td>
 			</tr>
 			<?php
-			foreach ($productArray as $product) { ?>
+			foreach ($productArray as $key => $product) { ?>
 				<tr>
 					<td><?php echo $product["productName"] ?></td>
 					<td><?php echo $product["productDesc"] ?></td>
@@ -53,7 +70,8 @@
 					<td><?php echo $product["productVendor"] ?></td>
 					<td><?php echo $product["productPrice"] ?></td>
 					<td><?php echo $product["productStock"] ?></td>
-					<td><a href="index.php?product=<?php echo $product["productName"]?>">Add to Cart</a></td>
+					<td><input type="number" name="productQuantity" id="productQuantity" placeholder="0"></td>
+					<td><a href="index.php?key=<?php echo $key?>">Add to Cart</a></td>
 				</tr>
 			<?php } ?>
 			
