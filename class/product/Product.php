@@ -143,8 +143,8 @@ class product
 
             $query = "UPDATE products SET productStock = :productStock WHERE id = :id";
             $statement = $connection->prepare($query);
-            $statement->bindParam("productStock", $stock, PDO::PARAM_STR);
-            $statement->bindParam("id", $id, PDO::PARAM_STR);
+            $statement->bindValue("productStock", $stock, PDO::PARAM_INT);
+            $statement->bindValue("id", $productID, PDO::PARAM_STR);
             return $statement->execute();
         }
         catch (PDOException $err) {

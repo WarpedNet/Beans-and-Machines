@@ -16,19 +16,20 @@ if (!$_SESSION['Active']){
 		$paymentInfoObj->setCardExpDate($_POST["expDate"]);
 		$paymentInfoObj->setCardCVV($_POST["cardCVV"]);
 		$paymentInfoObj->setCardType($_POST["cardType"]);
-		$paymentInfoObj->sendToDatabase();
+		// $paymentInfoObj->sendToDatabase(); Need to add a check to make sure it doesnt already exist
 
 		$productObj = new product();
 
 		foreach ($_SESSION["Cart"] as $product) {
-			$productObj->updateStock($product["id"], $product["stock"]-$product["quantity"]);
+			$productObj->updateStock($product["id"], ($product["stock"]-$product["quantity"]));
 		}
 
 
 		$_SESSION["Cart"] = array(); // Remove everything from cart since you already bought it
 
 
-		// header("Location: orderconfirmed.php"); // After payment send person to place or whatever
+		header("Location: orderconfirmed.php"); // After payment send person to place or whatever
+		exit;
 	}
 ?>
 
