@@ -1,7 +1,6 @@
 <?php
 
-namespace order;
-class PaymentInfo // payment info class
+class paymentInfo // payment info class
 {
     // variables
     private $cardNumber;
@@ -58,6 +57,9 @@ class PaymentInfo // payment info class
             CardCVV: $this->cardCVV
             CardType: $this->cardType
         ";
+    }
+    public function sendToDatabase() {
+        
     }
 }
 

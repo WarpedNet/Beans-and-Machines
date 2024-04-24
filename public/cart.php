@@ -32,14 +32,24 @@
 		</tr>
 		<?php
 		if (isset($_SESSION["Cart"])) {
-			foreach ($_SESSION["Cart"] as $product) { ?>
+			$total = 0;
+			foreach ($_SESSION["Cart"] as $product) { 
+				$itemCost = $product["price"]*$product["quantity"];
+				$total += $itemCost;
+				?>
 				<tr>
 					<td><?php echo $product["name"]; ?></td>
 					<td><?php echo $product["price"]; ?></td>
 					<td><?php echo $product["quantity"]; ?></td>
-					<td><?php echo $product["price"]*$product["quantity"]; ?></td>
+					<td><?php echo $itemCost; ?></td>
 				</tr>
 			<?php }} ?>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>Total</td>
+				<td><?php echo $total ?></td>
+			</tr>
 	</table>
 	<a href="payment.php">Go to payment</a>
 </div>

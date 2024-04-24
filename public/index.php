@@ -33,12 +33,17 @@
 					"id" 	  	=> $productArray[$indexKey]["id"],
 					"name"    	=> $productArray[$indexKey]["productName"],
 					"price"   	=> $productArray[$indexKey]["productPrice"],
-					"stock"   	=> $productArray[$indexKey]["productStock"],
 					"quantity"	=> 1
 				);
+
 			}
 			else {
 				$_SESSION["Cart"][$indexKey]["quantity"]++;
+			}
+
+			if ($productArray[$indexKey]["productStock"] < $_SESSION["Cart"][$indexKey]["quantity"]) {
+				$_SESSION["Cart"][$indexKey]["quantity"]--;
+				echo "Product out of stock!";
 			}
 			// Put code here to display "Added to cart" or whatever
 			//
@@ -88,7 +93,6 @@
 			<?php } ?>
 			
 		</table>
-		<input type="submit" name="sendToCart" value="Add to Cart">
 	</form>
 </div>
 
