@@ -24,7 +24,7 @@ function passwordVerify($password) {
     $numReg = '/\d/';
     $symbolReg = '/([-\'"()*,.:…;?#~$*<>,.&%£!¬`])/';
 
-    switch($this->escape($password)) {
+    switch(escape($password)) {
     case (strlen($password) < 5):
         echo "Password must be atleast 5 characters long";
         return false;
