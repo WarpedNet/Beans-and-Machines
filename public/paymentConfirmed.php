@@ -1,19 +1,16 @@
 <?php
-session_start();
-if (!$_SESSION['Active']){
-    header("Location: login.php");
-    exit;
-}
+    session_start();
+
+    if (!$_SESSION['Active']){
+        header("Location: login.php");
+        exit;
+    }
 ?>
 
+<?php require '../layout/header.php'?>
 
 <link rel="stylesheet" type="text/css" href="CSS/index.css">
 <div class="main-content" align="center">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <h1 style="font-family:sans-serif;">Your order has been placed for the following products:</h1>
     <table>
         <tr>
@@ -44,7 +41,11 @@ if (!$_SESSION['Active']){
             </tr>
     </table>
     <h1 style="font-family:sans-serif;">Thank you for your order!</h1>
-    <button name="home" value="home" onclick="location.href='index.php'">Return to Home</button>
+        <button name="home" value="home" onclick="location.href='index.php'">Return to Home</button>
+
 </div>
 
-<?php require '../layout/footer.php'; ?>
+<?php 
+    require '../layout/footer.php'; 
+    $_SESSION["Cart"] = array();
+?>

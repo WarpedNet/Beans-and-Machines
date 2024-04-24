@@ -24,11 +24,7 @@ if (!$_SESSION['Active']){
 			$productObj->updateStock($product["id"], ($product["stock"]-$product["quantity"]));
 		}
 
-
-		$_SESSION["Cart"] = array(); // Remove everything from cart since you already bought it
-
-
-		header("Location: orderconfirmed.php"); // After payment send person to place or whatever
+		header("Location: paymentConfirmed.php"); // After payment send person to place or whatever
 		exit;
 	}
 ?>
