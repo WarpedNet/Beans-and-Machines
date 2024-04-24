@@ -59,7 +59,29 @@ class paymentInfo // payment info class
         ";
     }
     public function sendToDatabase() {
-        
+        try {
+            require_once "../src/DBconnect.php";
+            require_once "../src/validation.php";
+
+            $paymentInfo = array(
+                "cardNumber"    => escape($this->cardNumber),
+                "cardExpDate"   => escape($this->cardExpDate),
+                "cardCVV"       => escape($this->cardCVV),
+                "cardType"      => escape($this->cardType)
+            );
+
+            $query = sprintf(
+                "INSERT INTO paymentInfo (%s) values (%s)",
+                implode(", ", array_keys($paymentInfo)),
+                ":" . implode(", :", array_keys($paymentInfo))
+            );
+            $connection = DBconnect();
+
+            return $connection->prepare($query)->execute($paymentInfo);
+        }
+        catch (PDOException $err) {
+            echo $query . "<br>" . $err->getMessage();
+        }
     }
 }
 

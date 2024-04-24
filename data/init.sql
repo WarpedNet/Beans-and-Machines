@@ -25,5 +25,9 @@ INSERT INTO users (username, password, isAdmin)
 VALUES ("admin", "admin", true);
 
 CREATE TABLE IF NOT EXISTS paymentInfo (
-    cardNumber INT(16) PRIMARY KEY
+    id INT (11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    cardNumber VARCHAR(20),
+    cardExpDate VARCHAR(20),
+    cardCVV VARCHAR(4),
+    cardType VARCHAR(20)
 );

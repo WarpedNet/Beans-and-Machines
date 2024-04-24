@@ -33,6 +33,7 @@
 					"id" 	  	=> $productArray[$indexKey]["id"],
 					"name"    	=> $productArray[$indexKey]["productName"],
 					"price"   	=> $productArray[$indexKey]["productPrice"],
+					"stock"     => $productArray[$indexKey]["productStock"],
 					"quantity"	=> 1
 				);
 

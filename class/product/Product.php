@@ -134,5 +134,22 @@ class product
         }
 
     }
+    public function updateStock($productID, $stock) {
+        try {
+            require_once "../src/DBconnect.php";
+            require_once "../src/validation.php";
+
+            $connection = DBconnect();
+
+            $query = "UPDATE products SET productStock = :productStock WHERE id = :id";
+            $statement = $connection->prepare($query);
+            $statement->bindParam("productStock", $stock, PDO::PARAM_STR);
+            $statement->bindParam("id", $id, PDO::PARAM_STR);
+            return $statement->execute();
+        }
+        catch (PDOException $err) {
+            echo $query . "<br>" . $err->getMessage();
+        }
+    }
 }
 ?>

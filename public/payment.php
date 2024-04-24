@@ -9,11 +9,26 @@ if (!$_SESSION['Active']){
 <?php 
 	if (isset($_POST["submit"])) {
 		require_once "../class/order/paymentInfo.php";
-		
+		require_once "../class/product/product.php";
+
+		$paymentInfoObj = new paymentInfo();
+		$paymentInfoObj->setCardNumber($_POST["cardNum"]);
+		$paymentInfoObj->setCardExpDate($_POST["expDate"]);
+		$paymentInfoObj->setCardCVV($_POST["cardCVV"]);
+		$paymentInfoObj->setCardType($_POST["cardType"]);
+		$paymentInfoObj->sendToDatabase();
+
+		$productObj = new product();
+
+		foreach ($_SESSION["Cart"] as $product) {
+			$productObj->updateStock($product["id"], $product["stock"]-$product["quantity"]);
+		}
 
 
+		$_SESSION["Cart"] = array(); // Remove everything from cart since you already bought it
 
-		header("Location: orderconfirmed.php"); // After payment send person to place or whatever
+
+		// header("Location: orderconfirmed.php"); // After payment send person to place or whatever
 	}
 ?>
 
