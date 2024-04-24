@@ -3,6 +3,10 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+if (isset($_SESSION["admin"]) == false || !$_SESSION['admin']){
+	header("Location: login.php");
+	exit;
+}
 
 if (isset($_POST["submit"])){
 	require "../class/product/product.php";
@@ -12,6 +16,7 @@ if (isset($_POST["submit"])){
 	$productObj->setAge($_POST["productAge"]);
 	$productObj->setVendor($_POST["productVendor"]);
 	$productObj->setPrice($_POST["productPrice"]);
+	$productObj->setStock($_POST["productStock"]);
 	$productObj->sendProductToDB();
 }
 
@@ -74,6 +79,9 @@ if (isset($_POST["submit"])){
 			<br>
 			<label for="productPrice">Product Price</label>
 			<input type="text" name="productPrice" id="productPrice" required>
+			<br>
+			<label for="productStock">Product Stock</label>
+			<input type="text" name="productStock" id="productStock" required>
 			<br>
 			<input type="submit" name="submit" value="Add Product">
 		</form>

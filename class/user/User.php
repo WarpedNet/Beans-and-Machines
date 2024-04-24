@@ -64,16 +64,14 @@ class user // user class
     public function sendToDatabase() {
         try {
             require_once '../src/DBconnect.php';
-            require_once '../class/validation.php';
+            require_once '../src/validation.php';
 
-            $valObj = new validation();
-
-            if ($valObj->passwordVerify($this->password)) {
+            if (passwordVerify($this->password)) {
                 $new_user = array(
-                    "username" => $valObj->escape($this->username),
-                    "password" => $valObj->escape($this->password),
-                    "email"    => $valObj->escape($this->email),
-                    "phoneNum" => $valObj->escape($this->phoneNum)
+                    "username" => escape($this->username),
+                    "password" => escape($this->password),
+                    "email"    => escape($this->email),
+                    "phoneNum" => escape($this->phoneNum)
                 );
 
                 $query = sprintf(

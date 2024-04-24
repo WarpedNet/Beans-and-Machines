@@ -12,16 +12,11 @@
 ?>
 
 <?php 
-	// function for showing entries from table
-	function ReadAll($table) {
-		require_once "../src/DBconnect.php";
+	require_once "../class/product/product.php";
 
-		$query = sprintf("SELECT * FROM %s;", escape($table));
+	$productObj = new product();
+	$productArray = $productObj->getAllProducts();
 
-		$statement = $connection->prepare($query);
-		$statement->execute();
-		return $statement->fetchAll();
-	}
 ?>
 
 <?php
@@ -37,7 +32,32 @@
 	<h1 style="font-family:sans-serif;">Products</h1> 
 	<!-- form -->
 	<form method="POST" action="index.php">
-		<!-- button for adding products to cart -->
+		<table>
+			<tr>
+				<th>Product Name |</th>
+				<th>Product Description |</th>
+				<th>Product Age |</th>
+				<th>Product Vendor |</th>
+				<th>Product Price |</th>
+				<th>Product Stock</th>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<?php
+			foreach ($productArray as $product) { ?>
+				<tr>
+					<td><?php echo $product["productName"] ?></td>
+					<td><?php echo $product["productDesc"] ?></td>
+					<td><?php echo $product["productAge"] ?></td>
+					<td><?php echo $product["productVendor"] ?></td>
+					<td><?php echo $product["productPrice"] ?></td>
+					<td><?php echo $product["productStock"] ?></td>
+					<td><a href="index.php?product=<?php echo $product["productName"]?>">Add to Cart</a></td>
+				</tr>
+			<?php } ?>
+			
+		</table>
 		<input type="submit" name="sendToCart" value="Add to Cart">
 	</form>
 </div>

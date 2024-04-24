@@ -7,19 +7,30 @@ CREATE TABLE IF NOT EXISTS products (
                           productDesc VARCHAR(50) NOT NULL,
                           productAge VARCHAR(3) NOT NULL,
                           productVendor VARCHAR(30) NOT NULL,
-                          productPrice VARCHAR(10) NOT NULL
+                          productPrice VARCHAR(10) NOT NULL,
+                          productStock VARCHAR(10) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS users (
     userID INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(30) NOT NULL,
     password VARCHAR(30) NOT NULL,
-    email VARCHAR(50) NOT NULL,
-    phoneNum VARCHAR(20) NOT NULL,
+    email VARCHAR(50),
+    phoneNum VARCHAR(20),
     isAdmin BOOLEAN
 );
 
+# Creating default admin user
+INSERT INTO users (username, password, isAdmin)
+VALUES ("admin", "admin", true);
+
 CREATE TABLE IF NOT EXISTS paymentInfo (
     cardNumber INT(16) PRIMARY KEY
+);
+
+CREATE TABLE IF NOT EXISTS cart (
+    cartID INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    userName VARCHAR(30) NOT NULL,
+    productName VARCHAR(30) NOT NULL
 );
 

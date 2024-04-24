@@ -7,6 +7,7 @@ class product
     private $productAge;
     private $productVendor;
     private $productPrice;
+    private $productStock;
 
     // set and get functions
 
@@ -45,6 +46,12 @@ class product
     public function getPrice() {
         return $this->productPrice;
     }
+    public function setStock($productStock) {
+        $this->productStock = $productStock;
+    }
+    public function getStock() {
+        return $this->productStock;
+    }
 
     // display function
     public function displayProduct() {
@@ -54,25 +61,63 @@ class product
             $this->productAge\n
             $this->productVendor\n
             $this->productPrice\n
+            $this->productStock\n
             ";
     }
+    
     public function getProductFromDB($productName) {
+        try {
+            require_once "../src/DBconnect.php";
 
+            $connection = DBconnect();
+            $query = "SELECT * FROM products WHERE productName = :productName";
+
+            $stmt = $connection->prepare($query);
+            $stmt->bindParam("productName", $productName, PDO::PARAM_STR);
+            $stmt->execute();
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $this->productName = $result["productName"];
+            $this->productDesc = $result["productDesc"];
+            $this->productAge = $result["productAge"];
+            $this->productVendor = $result["productVendor"];
+            $this->productPrice = $result["productPrice"];
+            $this->productStock = $result["productStock"];
+        }
+        catch (PDOException $err) {
+            echo $query . "<br>" . $err->getMessage();
+        }
     }
+    public function getAllProducts() {
+        try {
+            require_once '../src/DBconnect.php';
+
+            $connection = DBconnect();
+            $query = "SELECT * FROM products";
+            $stmt = $connection->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }
+        catch (PDOException $err) {
+            echo $query . "<br>" . $err->getMessage();
+        }
+    }
+
     public function sendProductToDB() {
         try {
             require_once '../src/DBconnect.php';
-            require_once '../class/validation.php';
+            require_once '../src/validation.php';
 
-            $valObj = new validation();
             $connection = DBconnect();
 
             $new_product = array(
-                "productName"   => $valObj->escape($this->productName),
-                "productDesc"   => $valObj->escape($this->productDesc),
-                "productAge"    => $valObj->escape($this->productAge),
-                "productVendor" => $valObj->escape($this->productVendor),
-                "productPrice"  => $valObj->escape($this->productPrice)
+                "productName"   => escape($this->productName),
+                "productDesc"   => escape($this->productDesc),
+                "productAge"    => escape($this->productAge),
+                "productVendor" => escape($this->productVendor),
+                "productPrice"  => escape($this->productPrice),
+                "productStock"  => escape($this->productStock)
             );
 
             $query = sprintf(

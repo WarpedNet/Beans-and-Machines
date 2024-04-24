@@ -14,6 +14,7 @@
 //
 if (isset($_POST["submit"])) {
     require_once '../class/user/user.php';
+    require_once '../class/product/cart.php';
     $usrObj = new user();
     if ($usrObj->getUserFromDatabase($_POST['userInput'], $_POST['passInput'])) {
         $_SESSION["Active"] = true;
