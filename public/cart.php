@@ -48,7 +48,7 @@
 				<td></td>
 				<td></td>
 				<td>Total</td>
-				<td><?php echo $total ?></td>
+				<td><?php echo (isset($total)) ? $total : null ?></td>
 			</tr>
 	</table>
 	<a href="payment.php">Go to payment</a>
