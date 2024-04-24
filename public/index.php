@@ -25,10 +25,10 @@
 
 		if (preg_match("/\d/", $indexKey) && $indexKey <= count($productArray) && $indexKey >=0) {
 			$_SESSION["Cart"][] = array(
-				"id" 	=> $productArray[$indexKey]["id"],
-				"name"  => $productArray[$indexKey]["productName"]
-				"price" => $productArray[$indexKey]["productPrice"],
-				"stock" => $productArray[$indexKey]["productStock"]
+				"id" 	   => $productArray[$indexKey]["id"],
+				"name"     => $productArray[$indexKey]["productName"],
+				"price"    => $productArray[$indexKey]["productPrice"],
+				"stock"    => $productArray[$indexKey]["productStock"],
 			);
 		}
 
@@ -57,6 +57,7 @@
 				<th>Product Vendor |</th>
 				<th>Product Price |</th>
 				<th>Product Stock</th>
+				<th>Quantity</th>
 			</tr>
 			<tr>
 				<td></td>
@@ -70,7 +71,6 @@
 					<td><?php echo $product["productVendor"] ?></td>
 					<td><?php echo $product["productPrice"] ?></td>
 					<td><?php echo $product["productStock"] ?></td>
-					<td><input type="number" name="productQuantity" id="productQuantity" placeholder="0"></td>
 					<td><a href="index.php?key=<?php echo $key?>">Add to Cart</a></td>
 				</tr>
 			<?php } ?>
