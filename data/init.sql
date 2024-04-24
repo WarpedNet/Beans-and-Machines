@@ -27,10 +27,3 @@ VALUES ("admin", "admin", true);
 CREATE TABLE IF NOT EXISTS paymentInfo (
     cardNumber INT(16) PRIMARY KEY
 );
-
-CREATE TABLE IF NOT EXISTS cart (
-    cartID INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    userName VARCHAR(30) NOT NULL,
-    productName VARCHAR(30) NOT NULL
-);
-
