@@ -23,6 +23,10 @@
 
 		$indexKey = $_GET["key"];
 
+		if (!isset($_SESSION["Cart"])) {
+			$_SESSION["Cart"] = array();
+		}
+
 		if (preg_match("/\d/", $indexKey) && $indexKey <= count($productArray) && $indexKey >=0) {
 			if (!isset($_SESSION["Cart"][$indexKey])) {
 				$_SESSION["Cart"][$indexKey] = array(

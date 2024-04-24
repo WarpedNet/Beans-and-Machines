@@ -18,7 +18,6 @@ if (isset($_POST["submit"])) {
     if ($usrObj->getUserFromDatabase($_POST['userInput'], $_POST['passInput'])) {
         $_SESSION["Active"] = true;
         $_SESSION['Username'] = $usrObj->getUsername();
-        $_SESSION["Cart"] = array();
 
         if ($usrObj->isAdmin()) {
             $_SESSION["admin"] = true;
