@@ -17,7 +17,7 @@
 	$productObj = new product();
 	$productArray = $productObj->getAllProducts();
 
-	// Checking that the key sent is a number & is less than the array & thats its greater than 0
+	// Checking that the key sent is a number & is less than the array & that's its greater than 0
 	// https://www.php.net/manual/en/function.preg-match
 	if (isset($_GET["key"])) {
 
@@ -40,6 +40,8 @@
 			}
 			else {
 				$_SESSION["Cart"][$indexKey]["quantity"]++;
+                //this method works to reduce the stock but it can go below zero for some reason, i'm fixing it - callum
+                $productObj->takeFromStock($productArray[$indexKey]["id"],$productArray[$indexKey]["productStock"]);
 			}
 
 			if ($productArray[$indexKey]["productStock"] < $_SESSION["Cart"][$indexKey]["quantity"]) {
@@ -47,8 +49,9 @@
 				echo "Product out of stock!";
 			}
 			// Put code here to display "Added to cart" or whatever
+			//ok i'll just echo it lmao - callum
 			//
-			//
+            echo "Added to cart!";
 		}
 
 	}
