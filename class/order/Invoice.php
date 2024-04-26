@@ -1,6 +1,7 @@
 <?php
 
 namespace order;
+use paymentInfo;
 
 class Invoice extends PaymentInfo // invoice class
 {

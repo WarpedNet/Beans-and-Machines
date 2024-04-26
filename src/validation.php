@@ -23,17 +23,21 @@ function checkUsername($username) {
 function passwordVerify($password) {
     $numReg = '/\d/';
     $symbolReg = '/([-\'"()*,.:…;?#~$*<>,.&%£!¬`])/';
+    $capitalReg = '/[A-Z]/';
 
     switch(escape($password)) {
-    case (strlen($password) < 5):
-        echo "Password must be atleast 5 characters long";
+    case (strlen($password) < 5 || strlen($password) > 30):
+        echo "Password must be at least 5-30 characters long.";
         return false;
     case (!preg_match($numReg, $password)):
-        echo "Password must contain numbers";
+        echo "Password must contain at least 1 number.";
         return false;
     case (!preg_match($symbolReg, $password)):
-        echo "Password must contain a symbol";
+        echo "Password must contain at least 1 special character.";
         return false;
+    case (!preg_match($capitalReg, $password)):
+        echo "Password must contain at least 1 capital character.";
+        break;
     default:
         return true;
     }
