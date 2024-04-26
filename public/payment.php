@@ -65,15 +65,15 @@ if (!$_SESSION['Active']){
 	<h1 style="font-family:sans-serif;">Payment Information</h1>
 	<form method="POST">
 		<label for="cardNum">Card Number</label>
-		<input type="number" id="cardNum" name="cardNum"><br>
+		<input type="number" id="cardNum" name="cardNum" required><br>
 		<label for="expDate">Expirary Date</label>
-		<input type="date" id="expDate" name="expDate"><br>
+		<input type="date" id="expDate" name="expDate" required><br>
 		<label for="cardCVV">CVV Number</label>
-		<input type="number" id="cardCVV" name="cardCVV"><br>
+		<input type="number" id="cardCVV" name="cardCVV" required><br>
 		<label for="MasterCard">MasterCard</label>
-		<input type="radio" id="MasterCard" name="cardType" value="masterCard">
+		<input type="radio" id="MasterCard" name="cardType" value="masterCard" required>
 		<label for="Visa">Visa</label>
-		<input type="radio" id="Visa" name="cardType" value="visa"><br>
+		<input type="radio" id="Visa" name="cardType" value="visa" required><br>
 		<input type="submit" name="submit" value="Purchase">
 	</form>
 
