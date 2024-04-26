@@ -25,14 +25,18 @@ function passwordVerify($password) {
     $symbolReg = '/([-\'"()*,.:…;?#~$*<>,.&%£!¬`])/';
 
     switch(escape($password)) {
-    case (strlen($password) < 5):
-        echo "Password must be atleast 5 characters long";
+    case (strlen($password) < 5 || strlen($password) > 30):
+        case strlen($password) < 5:
+            echo "Password must be at least 5 characters long.";
+            break;
+        case strlen($password) > 30:
+            echo "Password must not be greater than 30 characters.";
         return false;
     case (!preg_match($numReg, $password)):
-        echo "Password must contain numbers";
+        echo "Password must contain at least 1 number.";
         return false;
     case (!preg_match($symbolReg, $password)):
-        echo "Password must contain a symbol";
+        echo "Password must contain at least 1 special character.";
         return false;
     default:
         return true;

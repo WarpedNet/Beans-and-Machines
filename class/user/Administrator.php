@@ -1,6 +1,7 @@
 <?php
 
 namespace user;
+use user;
 
 class Administrator extends User // admin class
 {
