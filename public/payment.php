@@ -16,7 +16,8 @@ if (!$_SESSION['Active']){
 		$paymentInfoObj->setCardExpDate($_POST["expDate"]);
 		$paymentInfoObj->setCardCVV($_POST["cardCVV"]);
 		$paymentInfoObj->setCardType($_POST["cardType"]);
-		// $paymentInfoObj->sendToDatabase(); Need to add a check to make sure it doesnt already exist
+        $paymentInfoObj->checkCardNumber($_POST["cardNum"]);
+		$paymentInfoObj->sendToDatabase(); 
 
 		$productObj = new product();
 
@@ -63,6 +64,8 @@ if (!$_SESSION['Active']){
 			</tr>
 	</table>
 	<h1 style="font-family:sans-serif;">Payment Information</h1>
+    
+    <!--form for user to add all card values, all values are required-->
 	<form method="POST">
 		<label for="cardNum">Card Number</label>
 		<input type="number" id="cardNum" name="cardNum" required><br>

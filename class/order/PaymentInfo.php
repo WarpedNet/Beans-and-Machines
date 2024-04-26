@@ -58,6 +58,31 @@ class paymentInfo // payment info class
             CardType: $this->cardType
         ";
     }
+    public function checkCardNumber($cardNumber) {
+        try {
+            require_once  "../src/DBconnect.php";
+            require_once  "../src/validation.php";
+            
+            $conn = DBconnect();
+            $stmt = $conn->prepare("SELECT cardNumber from paymentinfo where cardNumber = ?");
+            $stmt->bindParam("?", $cardNumber);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            if ($result){
+                echo "Card Number exists already.";
+                return false;
+            }
+            else{
+                return true;
+            }
+            
+        }
+        catch (PDOException $err) {
+            echo $query . "<br>" . $err->getMessage();
+        }
+        
+    }
     public function sendToDatabase() {
         try {
             require_once "../src/DBconnect.php";
