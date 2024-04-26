@@ -16,7 +16,6 @@ if (!$_SESSION['Active']){
 		$paymentInfoObj->setCardExpDate($_POST["expDate"]);
 		$paymentInfoObj->setCardCVV($_POST["cardCVV"]);
 		$paymentInfoObj->setCardType($_POST["cardType"]);
-        $paymentInfoObj->checkCardNumber($_POST["cardNum"]);
         if ($paymentInfoObj->checkCardNumber($_POST["cardNum"])){
             $paymentInfoObj->sendToDatabase();
         }
