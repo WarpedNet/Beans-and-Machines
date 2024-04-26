@@ -25,6 +25,9 @@ if (isset($_POST["submit"])) {
 
         header("location: index.php");
     }
+    else {
+        echo "User does not exist";
+    }
 
 }
 ?>

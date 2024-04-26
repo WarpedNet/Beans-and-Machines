@@ -42,6 +42,7 @@
 					<td><?php echo $product["price"]; ?></td>
 					<td><?php echo $product["quantity"]; ?></td>
 					<td><?php echo $itemCost; ?></td>
+					<td><a href="cart.php?id=<?php echo $product["id"]; ?>">Remove from cart</a></td>
 				</tr>
 			<?php }} ?>
 			<tr>

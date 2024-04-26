@@ -102,20 +102,23 @@ class user // user class
             $stmt->execute();
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            $this->username = $result["username"];
-            $this->password = $result["password"];
-            $this->email = $result["email"];
-            $this->phoneNum = $result["phoneNum"];
-            $this->isAdmin = $result["isAdmin"];
-
             // Return true if username & password found else return false
             if ($result) {
+
+                $this->username = $result["username"];
+                $this->password = $result["password"];
+                $this->email = $result["email"];
+                $this->phoneNum = $result["phoneNum"];
+                $this->isAdmin = $result["isAdmin"];
+                
                 return true;
             }
             else {
                 return false;
             }
+
+
+
         }
         catch (PDOException $err) {
             echo $query . "<br>" . $err->getMessage();
