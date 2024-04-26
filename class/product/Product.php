@@ -151,41 +151,5 @@ class product
             echo $query . "<br>" . $err->getMessage();
         }
     }
-    //this was supposed to just decrease by 1 but we obviously can't do just that so i'm making it "better" - callum
-    public function takeFromStock($productID, $stock) {
-        try {
-            require_once "../src/DBconnect.php";
-            require_once "../src/validation.php";
-            
-            $connection = DBconnect();
-            
-            $query = "UPDATE products SET productStock = :productStock - 1 WHERE id = :id";
-            $statement = $connection->prepare($query);
-            $statement->bindValue("productStock", $stock, PDO::PARAM_INT);
-            $statement->bindValue("id", $productID, PDO::PARAM_STR);
-            return $statement->execute();
-        }
-        catch (PDOException $err) {
-            echo $query . "<br>" . $err->getMessage();
-        }
-        }
-        public function removeFromCart ($productID, $stock){
-            try {
-                require_once "../src/DBconnect.php";
-                require_once "../src/validation.php";
-                
-                $connection = DBconnect();
-                
-                $query = "UPDATE products SET productStock = :productStock + 1 WHERE id = :id";
-                $statement = $connection->prepare($query);
-                $statement->bindValue("productStock", $stock, PDO::PARAM_INT);
-                $statement->bindValue("id", $productID, PDO::PARAM_STR);
-                return $statement->execute();
-            }
-            catch (PDOException $err) {
-                echo $query . "<br>" . $err->getMessage();
-            }
-        }
-    
 }
 ?>

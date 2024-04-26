@@ -3,7 +3,6 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-// why are both of these conditions just the exact same?
 if (isset($_SESSION["admin"]) == false || !$_SESSION['admin']){
 	header("Location: login.php");
 	exit;

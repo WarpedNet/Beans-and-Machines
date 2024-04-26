@@ -19,17 +19,6 @@
 <?php
 	// adding the header to the page
 	require '../layout/header.php';
-    
-    
-    
-    
-    //gonna need a method that can add stock and subtract the value from the cart
-    //ok so this method doesn't work and it's probably for some dumb reason that i looked over
-    //my fault - callum
-    if (isset($_POST["remove"])) {
-        $productObj = new product();
-        $productObj->removeFromCart($_SESSION['cart'],$_SESSION["quantity"]);
-    }
 ?>
 
 <div class="main-content" align="center">
@@ -60,7 +49,6 @@
 				<td></td>
 				<td>Total</td>
 				<td><?php echo (isset($total)) ? $total : null ?></td>
-                <td><a href="index.php?key=<?php echo $key?>" id="remove">Remove From Cart</a></td>
 			</tr>
 	</table>
 	<a href="payment.php">Go to payment</a>
