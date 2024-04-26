@@ -88,7 +88,7 @@
 			</tr>
 			<?php
 			foreach ($productArray as $key => $product) { 
-				if ($product["productStock"] > 0 { ?>
+				if ($product["productStock"] > 0) { ?>
 				<tr>
 					<td><?php echo $product["productName"] ?></td>
 					<td><?php echo $product["productDesc"] ?></td>
