@@ -91,25 +91,31 @@ class user // user class
 
     public function getUserFromDatabase($username, $password) {
         try {
+            // requiring the database connection file
             require_once '../src/DBconnect.php';
 
             $connection = DBconnect();
+
+            // sql query for getting data from the database
             $query = 'SELECT * FROM users WHERE username = :username AND password = :password';
 
+            // preparing and executing the query
             $stmt = $connection->prepare($query);
             $stmt->bindParam(":username", $username, PDO::PARAM_STR);
             $stmt->bindParam(":password", $password, PDO::PARAM_STR);
             $stmt->execute();
 
+            // fetching
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
+            // assigning the database variables to php variables
             $this->username = $result["username"];
             $this->password = $result["password"];
             $this->email = $result["email"];
             $this->phoneNum = $result["phoneNum"];
             $this->isAdmin = $result["isAdmin"];
 
-            // Return true if username & password found else return false
+            // return true if username & password found, else return false
             if ($result) {
                 return true;
             }
