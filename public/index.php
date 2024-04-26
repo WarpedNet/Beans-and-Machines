@@ -26,8 +26,10 @@
 		if (!isset($_SESSION["Cart"])) {
 			$_SESSION["Cart"] = array();
 		}
-
+        
+        //check if key has digit | check if key is less than 0
 		if (preg_match("/\d/", $indexKey) && $indexKey <= count($productArray) && $indexKey >=0) {
+            //if it doesn't exist in the cart already, create it in cart
 			if (!isset($_SESSION["Cart"][$indexKey])) {
 				$_SESSION["Cart"][$indexKey] = array(
 					"id" 	  	=> $productArray[$indexKey]["id"],
@@ -38,13 +40,14 @@
 				);
 
 			}
+            //else, increase the quantity of said item
 			else {
 				$_SESSION["Cart"][$indexKey]["quantity"]++;
 			}
 
 			// Checking if item is in stock
 			if ($productArray[$indexKey]["productStock"] < $_SESSION["Cart"][$indexKey]["quantity"]) {
-				unset($_SESSION["Cart"][$indexKey]);
+				$_SESSION["Cart"][$indexKey]["quantity"]--;
 				echo "Product out of stock!";
 			}
 			// Put code here to display "Added to cart" or whatever
@@ -96,7 +99,6 @@
 					<td><a href="index.php?key=<?php echo $key; ?>">Add to Cart</a></td>
 				</tr>
 			<?php } ?>
-			
 		</table>
 	</form>
 </div>
