@@ -87,7 +87,8 @@
 				<td></td>
 			</tr>
 			<?php
-			foreach ($productArray as $key => $product) { ?>
+			foreach ($productArray as $key => $product) { 
+				if ($product["productStock"] > 0 { ?>
 				<tr>
 					<td><?php echo $product["productName"] ?></td>
 					<td><?php echo $product["productDesc"] ?></td>
@@ -98,7 +99,7 @@
 					<td><?php echo (isset($_SESSION["Cart"][$key])) ? $_SESSION["Cart"][$key]["quantity"] : 0?></td>
 					<td><a href="index.php?key=<?php echo $key; ?>">Add to Cart</a></td>
 				</tr>
-			<?php } ?>
+			<?php }} ?>
 		</table>
 	</form>
 </div>
