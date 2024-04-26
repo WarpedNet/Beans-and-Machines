@@ -17,7 +17,13 @@ if (!$_SESSION['Active']){
 		$paymentInfoObj->setCardCVV($_POST["cardCVV"]);
 		$paymentInfoObj->setCardType($_POST["cardType"]);
         $paymentInfoObj->checkCardNumber($_POST["cardNum"]);
-		$paymentInfoObj->sendToDatabase(); 
+        if ($paymentInfoObj->checkCardNumber($_POST["cardNum"])){
+            $paymentInfoObj->sendToDatabase();
+        }
+        else{
+            echo "Card number already exists!";
+        }
+		 
 
 		$productObj = new product();
 
