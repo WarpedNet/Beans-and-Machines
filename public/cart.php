@@ -11,7 +11,17 @@
 	}
 ?>
 
+<?php
 
+	if (isset($_GET["key"]) && preg_match('/\d/', $_GET["key"]) && isset($_SESSION["Cart"][$_GET["key"]]["quantity"])) {
+
+		$_SESSION["Cart"][$_GET["key"]]["quantity"]--;
+
+		if ($_SESSION["Cart"][$_GET["key"]]["quantity"] <= 0) {
+			unset($_SESSION["Cart"][$_GET["key"]]);
+		}
+	}
+?>
 
 <!-- stylesheet -->
 <link rel="stylesheet" type="text/css" href="../CSS/index.css">
@@ -33,7 +43,7 @@
 		<?php
 		if (isset($_SESSION["Cart"])) {
 			$total = 0;
-			foreach ($_SESSION["Cart"] as $product) { 
+			foreach ($_SESSION["Cart"] as $key => $product) { 
 				$itemCost = $product["price"]*$product["quantity"];
 				$total += $itemCost;
 				?>
@@ -42,8 +52,8 @@
 					<td><?php echo $product["price"]; ?></td>
 					<td><?php echo $product["quantity"]; ?></td>
 					<td><?php echo $itemCost; ?></td>
-					<td><a href="cart.php?id=<?php echo $product["id"]; ?>">Remove from cart</a></td>
-				</tr>
+					<td><a href="cart.php?key=<?php echo $key; ?>">Remove from cart</a></td>
+					</tr>
 			<?php }} ?>
 			<tr>
 				<td></td>
@@ -52,7 +62,13 @@
 				<td><?php echo (isset($total)) ? $total : null ?></td>
 			</tr>
 	</table>
-	<a href="payment.php">Go to payment</a>
+	
+	<?php if (isset($_SESSION["Cart"]) && count($_SESSION["Cart"]) > 0) { ?>
+		<a href="payment.php">Go to payment</a>
+	<?php } else { ?>
+		<a href="index.php">Add items to cart</a>
+	<?php } ?>
+	
 </div>
 
 <?php

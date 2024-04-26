@@ -33,7 +33,7 @@
 					"id" 	  	=> $productArray[$indexKey]["id"],
 					"name"    	=> $productArray[$indexKey]["productName"],
 					"price"   	=> $productArray[$indexKey]["productPrice"],
-					"stock"     => $productArray[$indexKey]["productStock"]-1,
+					"stock"     => $productArray[$indexKey]["productStock"],
 					"quantity"	=> 1
 				);
 
@@ -76,7 +76,8 @@
 				<th>Product Age |</th>
 				<th>Product Vendor |</th>
 				<th>Product Price |</th>
-				<th>Product Stock</th>
+				<th>Product Stock |</th>
+				<th>In Cart</th>
 			</tr>
 			<tr>
 				<td></td>
@@ -89,7 +90,8 @@
 					<td><?php echo $product["productAge"] ?></td>
 					<td><?php echo $product["productVendor"] ?></td>
 					<td><?php echo $product["productPrice"] ?></td>
-					<td><?php echo $product["productStock"] ?></td>
+					<td><?php echo (isset($_SESSION["Cart"][$key])) ? $product["productStock"] - $_SESSION["Cart"][$key]["quantity"] : $product["productStock"] ?></td>
+					<td><?php echo (isset($_SESSION["Cart"][$key])) ? $_SESSION["Cart"][$key]["quantity"] : 0?></td>
 					<td><a href="index.php?key=<?php echo $key; ?>">Add to Cart</a></td>
 				</tr>
 			<?php } ?>
