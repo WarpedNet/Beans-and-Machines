@@ -87,7 +87,9 @@
 				<td></td>
 			</tr>
 			<?php
+			// inserting the products into the table
 			foreach ($productArray as $key => $product) { 
+				// only display a product if the stock is above zero
 				if ($product["productStock"] > 0) { ?>
 				<tr>
 					<td><?php echo $product["productName"] ?></td>
