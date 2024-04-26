@@ -65,15 +65,15 @@ class paymentInfo // payment info class
             require_once  "../src/validation.php";
             
             $conn = DBconnect();
-            $stmt = $conn->prepare("SELECT cardNumber from paymentinfo where cardNumber = ?");
-            $stmt->bindParam("?", $cardNumber);
+            $stmt = $conn->prepare("SELECT cardNumber FROM paymentinfo where cardNumber = :cardNumber");
+            $stmt->bindParam("cardNumber", $cardNumber, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($result){
-                return true;
+            if ($result) {
+                return false;
             }
             else{
-                return false;
+                return true;
             }
         }
         catch (PDOException $err) {
