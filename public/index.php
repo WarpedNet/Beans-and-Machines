@@ -44,7 +44,7 @@
 
 			// Checking if item is in stock
 			if ($productArray[$indexKey]["productStock"] < $_SESSION["Cart"][$indexKey]["quantity"]) {
-				unset($_SESSION["Cart"][$indexKey]);
+				$_SESSION["Cart"][$indexKey]["quantity"]--;
 				echo "Product out of stock!";
 			}
 			// Put code here to display "Added to cart" or whatever
@@ -96,7 +96,6 @@
 					<td><a href="index.php?key=<?php echo $key; ?>">Add to Cart</a></td>
 				</tr>
 			<?php } ?>
-			
 		</table>
 	</form>
 </div>
