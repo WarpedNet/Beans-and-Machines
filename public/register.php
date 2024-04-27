@@ -3,7 +3,7 @@
 if (isset($_POST['submit'])){
     require_once "../src/validation.php";
 
-    if (!checkUsername($_POST['userInput'])) {
+    if (!checkUsername($_POST['userInput']) && passwordVerify($_POST["passInput"])) {
         require_once '../class/user/user.php';
         $usrObj = new user();
         $usrObj->setUsername($_POST["userInput"]);

@@ -21,7 +21,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <!-- logo image -->
             <img src="../Images/ChangeMe.jpg", width=150vw>
             <strong>Beans and Machines</strong>
-            <p class="title-links"><a href="index.php">Products</a> | <a href="aboutUs.php">About Us</a> | <a href="contact.php">Contact</a> <?php echo (isset($_SESSION["admin"]) && $_SESSION["admin"] ? " | <a href='../private/admin.php'>Admin</a>" : null); ?></p>
+            <p class="title-links"><a href="index.php">Products</a> | <a href="aboutUs.php">About Us</a> | <a href="contact.php">Contact</a> <?php echo (isset($_SESSION["admin"]) && $_SESSION["admin"] ? " | <a href='admin.php'>Admin</a>" : null); ?></p>
         </span>
         <span class="title-right">
             <!-- cart button -->

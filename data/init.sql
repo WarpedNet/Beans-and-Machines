@@ -26,8 +26,16 @@ VALUES ("admin", "admin", true);
 
 CREATE TABLE IF NOT EXISTS paymentInfo (
 	id INT (11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-   cardNumber VARCHAR(20),
-   cardExpDate VARCHAR(20),
-   cardCVV VARCHAR(4),
-   cardType VARCHAR(20)
+   userName VARCHAR(30) NOT NULL,
+   cardNumber VARCHAR(20) NOT NULL,
+   cardExpDate VARCHAR(20) NOT NULL,
+   cardCVV VARCHAR(4) NOT NULL,
+   cardType VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS productOrder (
+   id INT (11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+   userName VARCHAR(30) NOT NULL,
+   productName VARCHAR(30) NOT NULL,
+   quantity INT (11) NOT NULL
 );

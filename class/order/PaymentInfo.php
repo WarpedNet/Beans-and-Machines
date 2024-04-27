@@ -3,12 +3,19 @@
 class paymentInfo // payment info class
 {
     // variables
+    private $userName;
     private $cardNumber;
     private $cardExpDate;
     private $cardCVV;
     private $cardType;
 
     // set and get functions
+    public function setUserName($userName) {
+        $this->userName = $userName;
+    }
+    public function getUserName() {
+        return $this->userName;
+    }
     public function setCardNumber($cardNumber)
     {
         $this->cardNumber = $cardNumber;
@@ -87,6 +94,7 @@ class paymentInfo // payment info class
             require_once "../src/validation.php";
 
             $paymentInfo = array(
+                "userName"      => escape($this->userName),
                 "cardNumber"    => escape($this->cardNumber),
                 "cardExpDate"   => escape($this->cardExpDate),
                 "cardCVV"       => escape($this->cardCVV),

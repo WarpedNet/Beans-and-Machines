@@ -46,9 +46,12 @@ class user // user class
         return $this->phoneNum;
     }
 
-    // Only needs a getter method since it will be set when getting usr data
     public function isAdmin() {
         return $this->isAdmin;
+    }
+    // Is admin must be a bool value
+    public function setAdmin($isAdmin) {
+        $this->isAdmin = (boolval($isAdmin) && $isAdmin) ? 1 : 0;
     }
 
     // display method
@@ -66,23 +69,23 @@ class user // user class
             require_once '../src/DBconnect.php';
             require_once '../src/validation.php';
 
-            if (passwordVerify($this->password)) {
-                $new_user = array(
-                    "username" => escape($this->username),
-                    "password" => escape($this->password),
-                    "email"    => escape($this->email),
-                    "phoneNum" => escape($this->phoneNum)
-                );
+            $new_user = array(
+                "username" => escape($this->username),
+                "password" => escape($this->password),
+                "email"    => escape($this->email),
+                "phoneNum" => escape($this->phoneNum),
+                "isAdmin"  => escape($this->isAdmin)
+            );
 
-                $query = sprintf(
-                                    "INSERT INTO users (%s) values (%s)",
-                                    implode(", ", array_keys($new_user)),
-                                    ":" . implode(", :", array_keys($new_user)));
-                $connection = DBconnect();
+            $query = sprintf(
+                                "INSERT INTO users (%s) values (%s)",
+                                implode(", ", array_keys($new_user)),
+                                ":" . implode(", :", array_keys($new_user)));
+            $connection = DBconnect();
 
-                // Returns true if the query was successful, else returns false
-                return $connection->prepare($query)->execute($new_user);
-            }
+            // Returns true if the query was successful, else returns false
+            return $connection->prepare($query)->execute($new_user);
+            
         }
         catch (PDOException $err) {
             echo $query . "<br>" . $err->getMessage();
@@ -122,9 +125,99 @@ class user // user class
             else {
                 return false;
             }
+        }
+        catch (PDOException $err) {
+            echo $query . "<br>" . $err->getMessage();
+        }
+    }
+    public function getUserFromDatabaseByID($userID) {
+        try {
+            // requiring the database connection file
+            require_once '../src/DBconnect.php';
 
+            $connection = DBconnect();
 
+            // sql query for getting data from the database
+            $query = 'SELECT * FROM users WHERE userID = :userID';
 
+            // preparing and executing the query
+            $stmt = $connection->prepare($query);
+            $stmt->bindParam(":userID", $userID, PDO::PARAM_STR);
+            $stmt->execute();
+
+            // fetching
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($result) {
+                $this->username = $result["username"];
+                $this->password = $result["password"];
+                $this->email = $result["email"];
+                $this->phoneNum = $result["phoneNum"];
+                $this->isAdmin = $result["isAdmin"];
+            }
+        }
+        catch (PDOException $err) {
+            echo $query . "<br>" . $err->getMessage();
+        }
+    }
+    public function getAllUsers() {
+        try {
+            require_once '../src/DBconnect.php';
+
+            $connection = DBconnect();
+
+            $query = "SELECT * FROM users";
+            $stmt = $connection->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }
+        catch (PDOException $err) {
+            echo $query . "<br>" . $err->getMessage();
+        }
+    }
+    public function deleteUser($userID) {
+        try {
+            require_once "../src/DBconnect.php";
+
+            $connection = DBconnect();
+
+            $query = "DELETE FROM users WHERE userID = :userID";
+            $statement = $connection->prepare($query);
+            $statement->bindParam("userID", $userID, PDO::PARAM_INT);
+            return $statement->execute();
+        }
+        catch (PDOException $err) {
+            echo $query . "<br>" . $err->getMessage();
+        }
+    }
+    public function updateUser($userID) {
+        try {
+            require_once '../src/DBconnect.php';
+            require_once '../src/validation.php';
+
+            $connection = DBconnect();
+
+            $new_info = array(
+                "userID"     => escape($userID),
+                "username"   => escape($this->username),
+                "password"   => escape($this->password),
+                "email"      => escape($this->email),
+                "phoneNum"   => escape($this->phoneNum),
+                "isAdmin"    => escape($this->isAdmin)
+            );
+            $query = sprintf("
+                
+                UPDATE users SET
+                username     = :username,
+                password      = :password,
+                email   = :email,
+                phoneNum    = :phoneNum,
+                isAdmin    = :isAdmin
+                WHERE userID = :userID;
+                "
+            );
+
+            $stmt = $connection->prepare($query)->execute($new_info);
         }
         catch (PDOException $err) {
             echo $query . "<br>" . $err->getMessage();

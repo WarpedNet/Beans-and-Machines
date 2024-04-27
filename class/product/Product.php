@@ -23,7 +23,7 @@ class product
     public function setDesc($productDesc) {
         $this->productDesc = $productDesc;
     }
-    public function getDesc($productDesc) {
+    public function getDesc() {
         return $this->productDesc;
     }
 
@@ -31,7 +31,7 @@ class product
         $this->productAge = $productAge;
     }
 
-    public function getAge($productAge) {
+    public function getAge() {
         return $this->productAge;
     }
     public function setVendor($productVendor) {
@@ -65,25 +65,27 @@ class product
             ";
     }
     
-    public function getProductFromDB($productName) {
+    public function getProductFromDB($productID) {
         try {
             require_once "../src/DBconnect.php";
 
             $connection = DBconnect();
-            $query = "SELECT * FROM products WHERE productName = :productName";
+            $query = "SELECT * FROM products WHERE id = :id";
 
             $stmt = $connection->prepare($query);
-            $stmt->bindParam("productName", $productName, PDO::PARAM_STR);
+            $stmt->bindParam("id", $productID, PDO::PARAM_STR);
             $stmt->execute();
             
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $this->productName = $result["productName"];
-            $this->productDesc = $result["productDesc"];
-            $this->productAge = $result["productAge"];
-            $this->productVendor = $result["productVendor"];
-            $this->productPrice = $result["productPrice"];
-            $this->productStock = $result["productStock"];
+            if ($result) {
+                $this->productName = $result["productName"];
+                $this->productDesc = $result["productDesc"];
+                $this->productAge = $result["productAge"];
+                $this->productVendor = $result["productVendor"];
+                $this->productPrice = $result["productPrice"];
+                $this->productStock = $result["productStock"];
+            }
         }
         catch (PDOException $err) {
             echo $query . "<br>" . $err->getMessage();
@@ -134,6 +136,41 @@ class product
         }
 
     }
+    public function updateProduct($id) {
+        try {
+            require_once '../src/DBconnect.php';
+            require_once '../src/validation.php';
+
+            $connection = DBconnect();
+
+            $new_info = array(
+                "id"            => escape($id),
+                "productName"   => escape($this->productName),
+                "productDesc"   => escape($this->productDesc),
+                "productAge"    => escape($this->productAge),
+                "productVendor" => escape($this->productVendor),
+                "productPrice"  => escape($this->productPrice),
+                "productStock"  => escape($this->productStock)
+            );
+            $query = sprintf("
+                
+                UPDATE products SET
+                productName     = :productName,
+                productDesc     = :productDesc,
+                productAge      = :productAge,
+                productVendor   = :productVendor,
+                productPrice    = :productPrice,
+                productStock    = :productStock
+                WHERE id = :id;
+                "
+            );
+
+            $stmt = $connection->prepare($query)->execute($new_info);
+        }
+        catch (PDOException $err) {
+            echo $query . "<br>" . $err->getMessage();
+        }
+    }
     public function updateStock($productID, $stock) {
         try {
             require_once "../src/DBconnect.php";
@@ -145,6 +182,21 @@ class product
             $statement = $connection->prepare($query);
             $statement->bindValue("productStock", $stock, PDO::PARAM_INT);
             $statement->bindValue("id", $productID, PDO::PARAM_STR);
+            return $statement->execute();
+        }
+        catch (PDOException $err) {
+            echo $query . "<br>" . $err->getMessage();
+        }
+    }
+    public function deleteProduct($productID) {
+        try {
+            require_once "../src/DBconnect.php";
+
+            $connection = DBconnect();
+
+            $query = "DELETE FROM products WHERE id = :id";
+            $statement = $connection->prepare($query);
+            $statement->bindParam("id", $productID, PDO::PARAM_INT);
             return $statement->execute();
         }
         catch (PDOException $err) {

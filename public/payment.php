@@ -10,8 +10,10 @@ if (!$_SESSION['Active']){
 	if (isset($_POST["submit"])) {
 		require_once "../class/order/paymentInfo.php";
 		require_once "../class/product/product.php";
+		require_once "../class/order/ProductOrder.php";
 
 		$paymentInfoObj = new paymentInfo();
+		$paymentInfoObj->setUserName($_SESSION["Username"]);
 		$paymentInfoObj->setCardNumber($_POST["cardNum"]);
 		$paymentInfoObj->setCardExpDate($_POST["expDate"]);
 		$paymentInfoObj->setCardCVV($_POST["cardCVV"]);
@@ -25,9 +27,15 @@ if (!$_SESSION['Active']){
 		 
 
 		$productObj = new product();
+		$productOrderObj = new ProductOrder();
 
 		foreach ($_SESSION["Cart"] as $product) {
 			$productObj->updateStock($product["id"], ($product["stock"]-$product["quantity"]));
+
+			$productOrderObj->setUserName($_SESSION["Username"]);
+			$productOrderObj->setProductName($product["name"]);
+			$productOrderObj->setQuantity($product["quantity"]);
+			$productOrderObj->sendToDatabase();
 		}
 
 		header("Location: paymentConfirmed.php"); // After payment send person to place or whatever
