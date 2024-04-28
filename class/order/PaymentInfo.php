@@ -56,20 +56,11 @@ class paymentInfo // payment info class
         return $this->cardType;
     }
 
-    // display function
-    public function displayPaymentInfo() {
-        return "
-            CardNumber: $this->cardNumber
-            CardExpDate: $this->cardExpDate
-            CardCVV: $this->cardCVV
-            CardType: $this->cardType
-        ";
-    }
     public function checkCardNumber($cardNumber)
     {
         try {
-            require_once  "../src/DBconnect.php";
-            require_once  "../src/validation.php";
+            require_once  __DIR__."/../../src/DBconnect.php";
+            require_once  __DIR__."/../../src/validation.php";
             
             $conn = DBconnect();
             $stmt = $conn->prepare("SELECT cardNumber FROM paymentinfo where cardNumber = :cardNumber");
@@ -90,8 +81,8 @@ class paymentInfo // payment info class
     }
     public function sendToDatabase() {
         try {
-            require_once "../src/DBconnect.php";
-            require_once "../src/validation.php";
+            require_once __DIR__."/../../src/DBconnect.php";
+            require_once __DIR__."/../../src/validation.php";
 
             $paymentInfo = array(
                 "userName"      => escape($this->userName),

@@ -29,8 +29,8 @@ class ProductOrder // product order class
 
 	public function sendToDatabase() {
 		try {
-			require_once '../src/DBconnect.php';
-            require_once '../src/validation.php';
+			require_once __DIR__.'/../../src/DBconnect.php';
+            require_once __DIR__.'/../../src/validation.php';
 
             $connection = DBconnect();
 
@@ -54,7 +54,7 @@ class ProductOrder // product order class
 	}
 	public function getAllOrders() {
         try {
-            require_once '../src/DBconnect.php';
+            require_once __DIR__.'/../../src/DBconnect.php';
 
             $connection = DBconnect();
             $query = "SELECT * FROM productOrder";
@@ -68,7 +68,7 @@ class ProductOrder // product order class
 	}
 	public function deleteOrder($orderID) {
         try {
-            require_once "../src/DBconnect.php";
+            require_once __DIR__."/../../src/DBconnect.php";
 
             $connection = DBconnect();
 
@@ -83,7 +83,7 @@ class ProductOrder // product order class
 	}
 	public function getOrder($orderID) {
         try {
-            require_once "../src/DBconnect.php";
+            require_once __DIR__."/../../src/DBconnect.php";
 
             $connection = DBconnect();
             $query = "SELECT * FROM productOrder WHERE id = :id";
@@ -106,8 +106,8 @@ class ProductOrder // product order class
 	}
 	public function updateOrder($orderID) {
         try {
-            require_once '../src/DBconnect.php';
-            require_once '../src/validation.php';
+            require_once __DIR__.'/../../src/DBconnect.php';
+            require_once __DIR__.'/../../src/validation.php';
 
             $connection = DBconnect();
 
