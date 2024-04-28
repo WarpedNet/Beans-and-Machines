@@ -25,6 +25,7 @@ Overall Contribution: 33%.
 - Worked on database configuration files.
 - Validation testing.
 - Unit testing.
+
 Overall Contribution: 33%.
 
 ### Callum:
@@ -35,4 +36,5 @@ Overall Contribution: 33%.
 - Use case diagram and planning.
 - Equivalence Partition testing.
 - Basis path testing.
-  Overall Contribution: 33%.
+
+Overall Contribution: 33%.
