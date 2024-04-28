@@ -35,9 +35,12 @@ function passwordVerify($password) {
     case (!preg_match($symbolReg, $password)):
         echo "Password must contain at least 1 special character.";
         return false;
+    case ($password = null):
+        echo "Password cannot be null.";
+        return false;
     case (!preg_match($capitalReg, $password)):
-        echo "Password must contain at least 1 capital character.";
-        break;
+        echo "Password must contain at least 1 alphanumeric character.";
+        return false;
     default:
         return true;
     }
