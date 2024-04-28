@@ -11,6 +11,7 @@ if (isset($_SESSION["admin"]) == false || !$_SESSION['admin']){
 
 <?php
 require_once "../class/product/product.php";
+require_once "../src/validation.php";
 
 $productObj = new product();
 $productArray = $productObj->getAllProducts();
@@ -29,7 +30,7 @@ if (isset($_POST["submit"])){
 	exit();
 }
 
-if (isset($_GET["id"]) && preg_match("/\d/", $_GET["id"]) && $_GET["id"] >=0) {
+if (isset($_GET["id"]) && verifyID($_GET["id"])) {
 	$productObj->deleteProduct($_GET["id"]);
 
 	// Header to remove the id=NUM in the link (prevents the form from resubmitting)
