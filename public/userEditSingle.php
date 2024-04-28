@@ -27,7 +27,7 @@ if (isset($_SESSION["admin"]) == false || !$_SESSION['admin']){
 			if ($_POST["userEmail"] != null) {
 				$userObj->setEmail($_POST["userEmail"]);
 			}
-			if ($_POST["userPhone"] != null) {
+			if ($_POST["userPhone"] != null && verifyPhoneNumber($_POST["userPhone"])) {
 				$userObj->setPhoneNum($_POST["userPhone"]);
 			}
 			if ($_POST["isAdmin"] != null && $_POST["isAdmin"] == "true") {

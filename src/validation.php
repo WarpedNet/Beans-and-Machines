@@ -100,7 +100,19 @@ function verifyCardNumber($number) {
 }
 
 function verifyPhoneNumber($number) {
-    
+    // <3 regexr.com
+    $phoneNumberReg = '/\+[\d]{1,3}-[\d]{1,3}-[\d]{1,4}-[\d]{1,4}/';
+    if ($number == null) {
+        echo nl2br("Phone number cannot be null\n");
+        return false;
+    }
+    else if (preg_match($phoneNumberReg, $number)) {
+        return true;
+    }
+    else {
+        echo nl2br("Phone Number must be in the format of +X-XXX-XXXX-XXXX\n");
+        return false;
+    }
 }
 
 function escape($data) {
