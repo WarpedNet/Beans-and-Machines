@@ -17,7 +17,7 @@
 	$productObj = new product();
 	$productArray = $productObj->getAllProducts();
 
-	// Checking that the key sent is a number & is less than the array & that its greater than 0
+	// checking that the key sent is a number & is less than the array & that its greater than 0
 	// https://www.php.net/manual/en/function.preg-match
 	if (isset($_GET["key"])) {
 
@@ -27,7 +27,7 @@
 			$_SESSION["Cart"] = array();
 		}
         
-        //check if key has digit | check if key is less than 0
+        // check if key has digit | check if key is less than 0
 		if (preg_match("/\d/", $indexKey) && $indexKey <= count($productArray) && $indexKey >=0) {
             //if it doesn't exist in the cart already, create it in cart
 			if (!isset($_SESSION["Cart"][$indexKey])) {
@@ -40,24 +40,22 @@
 				);
 
 			}
-            //else, increase the quantity of said item
+            // else, increase the quantity of said item
 			else {
 				$_SESSION["Cart"][$indexKey]["quantity"]++;
 			}
 
-			// Checking if item is in stock
+			// checking if item is in stock
 			if ($productArray[$indexKey]["productStock"] < $_SESSION["Cart"][$indexKey]["quantity"]) {
 				$_SESSION["Cart"][$indexKey]["quantity"]--;
 				echo "Product out of stock!";
 			}
 			// Put code here to display "Added to cart" or whatever
-			//  i will echo "added to cart"
+			// i will echo "added to cart"
 			// i put so much effort into this :)
             echo "Added to cart!";
 		}
-
 	}
-
 ?>
 
 <?php

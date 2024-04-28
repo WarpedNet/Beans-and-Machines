@@ -24,6 +24,7 @@ if($_SESSION['Active'] == false){ /* Redirects user to login.php if not logged i
             <!-- logo image -->
             <img src="../Images/ChangeMe.jpg", width=150vw>
             <strong>Beans and Machines</strong>
+            <!-- only shows admin page as an option if the user is logged in as an admin -->
             <p class="title-links"><a href="index.php">Products</a> | <a href="aboutUs.php">About Us</a> | <a href="contact.php">Contact</a> <?php echo (isset($_SESSION["admin"]) && $_SESSION["admin"] ? " | <a href='admin.php'>Admin</a>" : null); ?></p>
         </span>
         <span class="title-right">
@@ -35,6 +36,7 @@ if($_SESSION['Active'] == false){ /* Redirects user to login.php if not logged i
             </div>
             <!-- login button -->
             <div class="title-buttons">
+                <!-- changes text of login button to "log out" if user is logged in -->
                 <?php if (isset($_SESSION["Active"]) && $_SESSION["Active"] = true) { ?>
                     <button onclick="location.href='../public/logout.php'"><img src="../Images/Icons/login.png", width=50vw></button>
                     <p>Log Out</p>  

@@ -41,8 +41,7 @@
             </tr>
     </table>
     <h1 style="font-family:sans-serif;">Thank you for your order!</h1>
-        <button name="home" value="home" onclick="location.href='index.php'">Return to Home</button>
-
+    <button name="home" value="home" onclick="location.href='index.php'">Return to Home</button>
 </div>
 
 <?php 

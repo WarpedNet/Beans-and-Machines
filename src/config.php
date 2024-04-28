@@ -1,3 +1,4 @@
+<!-- contains important details for database -->
 <?php
 	$host = "localhost";
 	$username = "root";

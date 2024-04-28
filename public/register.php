@@ -1,30 +1,42 @@
 <?php
-// Sending registration data to database
-if (isset($_POST['submit'])){
-    require_once "../src/validation.php";
+    // sending registration data to database
+    if (isset($_POST['submit'])){
+        require_once "../src/validation.php";
 
-    if (!checkUsername($_POST['userInput'])) {
-        if (passwordVerify($_POST["passInput"]) && verifyPhoneNumber($_POST["phoneNumInput"])) {
-            require_once '../class/user/user.php';
-            $usrObj = new user();
-            $usrObj->setUsername($_POST["userInput"]);
-            $usrObj->setPassword($_POST["passInput"]);
-            $usrObj->setPhoneNum($_POST["phoneNumInput"]);
-            $usrObj->setEmail($_POST["emailInput"]);
-            $usrObj->setAdmin(false);
-            $usrObj->sendToDatabase();
+        // if the username does not exist in the database
+        if (!checkUsername($_POST['userInput'])) {
+            if (passwordVerify($_POST["passInput"]) && verifyPhoneNumber($_POST["phoneNumInput"])) {
+                require_once '../class/user/user.php';
+                $usrObj = new user();
+                $usrObj->setUsername($_POST["userInput"]);
+                $usrObj->setPassword($_POST["passInput"]);
+                $usrObj->setPhoneNum($_POST["phoneNumInput"]);
+                $usrObj->setEmail($_POST["emailInput"]);
+                $usrObj->setAdmin(false);
+                $usrObj->sendToDatabase();
 
-            header("Location: login.php");
-            exit();
+                // redirecting user to login once they have registered
+                header("Location: login.php");
+                exit();
+            }
+        }
+
+        // showing a message if the username already exists in the database
+        else {
+            ?> 
+            <div align="center">
+                <h2 style="color: red;">(Username already exists.)</h2>
+            </div>
+            <?php
         }
     }
-    else {
-        echo "Username already exists!";
-    }
-
-}
 ?>
-<?php require "../layout/headerWOLogin.php"; ?>
+
+<!-- requiring non login redirect version of header -->
+<?php 
+    require "../layout/headerWOLogin.php";
+?>
+
 <!-- displaying login popup -->
 <link rel="stylesheet" type="text/css" href="../CSS/index.css">
 <div class="login-form" align="center">
