@@ -1,4 +1,5 @@
 # Beans-and-Machines Project Details
+## GitHub Repository Link: https://github.com/WarpedNet/Beans-and-Machines/tree/main
 
 ## Resources:
 - Preg Match Tutorial: https://www.php.net/manual/en/function.preg-match
