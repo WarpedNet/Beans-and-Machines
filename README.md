@@ -5,6 +5,8 @@
 - Preg Match Tutorial: https://www.php.net/manual/en/function.preg-match
 - nl2br Function: https://www.php.net/manual/en/function.nl2br.php
 - Preg Replace Tutorial: https://www.php.net/manual/en/function.preg-replace.php
+- Regexr: https://www.regexr.com
+- Magic constants (__DIR__): https://www.php.net/manual/en/language.constants.magic.php
 
 ## Contribution Statement:
 ### Jake:
