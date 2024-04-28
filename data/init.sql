@@ -1,6 +1,9 @@
 CREATE DATABASE IF NOT EXISTS beansdb;
-# dump query
+
+# using database
 USE beansdb;
+
+# creating products table
 CREATE TABLE IF NOT EXISTS products (
 	id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	productName VARCHAR(30) NOT NULL,
@@ -11,6 +14,7 @@ CREATE TABLE IF NOT EXISTS products (
    productStock VARCHAR(10) NOT NULL
 );
 
+# creating users table
 CREATE TABLE IF NOT EXISTS users (
    userID INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
    username VARCHAR(30) NOT NULL,
@@ -20,10 +24,11 @@ CREATE TABLE IF NOT EXISTS users (
    isAdmin BOOLEAN
 );
 
-# Creating default admin user
+# creating default admin user
 INSERT INTO users (username, password, isAdmin)
 VALUES ("admin", "admin", true);
 
+# creating payment info table
 CREATE TABLE IF NOT EXISTS paymentInfo (
 	id INT (11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
    userName VARCHAR(30) NOT NULL,
@@ -33,6 +38,7 @@ CREATE TABLE IF NOT EXISTS paymentInfo (
    cardType VARCHAR(20) NOT NULL
 );
 
+# creating product order table
 CREATE TABLE IF NOT EXISTS productOrder (
    id INT (11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
    userName VARCHAR(30) NOT NULL,
