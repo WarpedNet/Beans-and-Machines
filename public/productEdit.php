@@ -1,44 +1,51 @@
 <?php
+	// start session if there is no active session
+	if (session_status() == PHP_SESSION_NONE) {
+	    session_start();
+	}
 
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-if (isset($_SESSION["admin"]) == false || !$_SESSION['admin']){
-	header("Location: login.php");
-	exit;
-}
+	// if the user is not admin, send them to login page
+	if (isset($_SESSION["admin"]) == false || !$_SESSION['admin']){
+		header("Location: login.php");
+		exit;
+	}
+?>
+
+<!-- setting the header at the top of the page -->
+<?php 
+	require '../layout/header.php';
 ?>
 
 <?php
-require_once "../class/product/product.php";
-require_once "../src/validation.php";
+	require_once "../class/product/product.php";
+	require_once "../src/validation.php";
 
-$productObj = new product();
-$productArray = $productObj->getAllProducts();
+	$productObj = new product();
+	$productArray = $productObj->getAllProducts();
 
-if (isset($_POST["submit"])){
-	$productObj->setName($_POST["productName"]);
-	$productObj->setDesc($_POST["productDesc"]);
-	$productObj->setAge($_POST["productAge"]);
-	$productObj->setVendor($_POST["productVendor"]);
-	$productObj->setPrice($_POST["productPrice"]);
-	$productObj->setStock($_POST["productStock"]);
-	$productObj->sendProductToDB();
+	if (isset($_POST["submit"])){
+		$productObj->setName($_POST["productName"]);
+		$productObj->setDesc($_POST["productDesc"]);
+		$productObj->setAge($_POST["productAge"]);
+		$productObj->setVendor($_POST["productVendor"]);
+		$productObj->setPrice($_POST["productPrice"]);
+		$productObj->setStock($_POST["productStock"]);
+		$productObj->sendProductToDB();
 
-	// Header to remove the id=NUM in the link (prevents the form from resubmitting)
-	header("Location: productEdit.php");
-	exit();
-}
+		// header to remove the id=NUM in the link (prevents the form from resubmitting)
+		header("Location: productEdit.php");
+		exit();
+	}
 
-if (isset($_GET["id"]) && verifyID($_GET["id"])) {
-	$productObj->deleteProduct($_GET["id"]);
+	if (isset($_GET["id"]) && verifyID($_GET["id"])) {
+		$productObj->deleteProduct($_GET["id"]);
 
-	// Header to remove the id=NUM in the link (prevents the form from resubmitting)
-	header("Location: productEdit.php");
-	exit();
-}
-
+		// header to remove the id=NUM in the link (prevents the form from resubmitting)
+		header("Location: productEdit.php");
+		exit();
+	}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,34 +58,6 @@ if (isset($_GET["id"]) && verifyID($_GET["id"])) {
     <title>Beans and Machines</title>
 </head>
 <body>
-    <header>
-        <span class="title-left">
-            <!-- logo image -->
-            <img src="../Images/ChangeMe.jpg", width=150vw>
-            <strong>Beans and Machines</strong>
-            <p class="title-links"><a href="../public/index.php">Products</a> | <a href="aboutUs.php">About Us</a> | <a href="contact.php">Contact</a> <?php echo (isset($_SESSION["admin"]) && $_SESSION["admin"] ? " | <a href='admin.php'>Admin</a>" : null); ?></p>
-        </span>
-        <span class="title-right">
-            <!-- cart button -->
-            <div class="title-buttons">
-                <button onclick="location.href='cart.php'"><img src="../Images/Icons/cart.png", width=50vw></button>
-                <p>Cart</p>
-            </div>
-            <!-- login button -->
-            <div class="title-buttons">
-                <?php if (isset($_SESSION["Active"]) && $_SESSION["Active"] = true) { ?>
-                    <button onclick="location.href='../public/logout.php'"><img src="../Images/Icons/login.png", width=50vw></button>
-                    <p>Log Out</p>  
-
-                    <?php } else { ?>
-                         <button onclick="location.href='login.php'"><img src="../Images/Icons/login.png", width=50vw></button> 
-                         <p>Log In</p>
-                         
-                    <?php } ?>
-            </div>
-        </span>
-    </header>
-
 	<div class="main-content" align="center">
 		<div>
 			<h1 style="font-family:sans-serif;">Current Products</h1>

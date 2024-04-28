@@ -34,6 +34,7 @@
 
 <div class="main-content" align="center">
 	<h1 style="font-family:sans-serif;">Cart</h1>
+	<!-- using a table to display data -->
 	<table>
 		<tr>
 			<th>Product Name</th>
@@ -41,6 +42,8 @@
 			<th>Product Quantity</th>
 			<th>Total</th>
 		</tr>
+
+		<!-- cart details -->
 		<?php
 		if (isset($_SESSION["Cart"])) {
 			$total = 0;
@@ -64,6 +67,7 @@
 			</tr>
 	</table>
 	
+	<!-- showing payment button if cart has items -->
 	<?php if (isset($_SESSION["Cart"]) && count($_SESSION["Cart"]) > 0) { ?>
 		<a href="payment.php">Go to payment</a>
 	<?php } else { ?>

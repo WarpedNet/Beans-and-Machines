@@ -25,31 +25,53 @@ function passwordVerify($password){
     $symbolReg = '/([-\'"()*,.:…;?#~$*<>,.&%£!¬`])/';
     $capitalReg = '/[A-Z]/';
 
-    //using the nl2br() function: https://www.php.net/manual/en/function.nl2br.php
-    //this is used to echo a break before newlines in the string.
-    
+    // using the nl2br() function: https://www.php.net/manual/en/function.nl2br.php
+    // this is used to echo a break before newlines in the string.
+    // no longer using this ^ using html instead
 
+    // switch case for each password verification check
     switch($password) {
+        // if the password is too long or too short
         case (strlen($password) < 5 || strlen($password) > 30):
-            echo nl2br("Password must be at least 5-30 characters long." . "\n");
-            echo nl2br("\n");
+            ?> 
+            <div align="center">
+                <h2 style="color: red;">(Password must be at least 5-30 characters long.)</h2>
+            </div>
+            <?php
             return false;
+        // if the password does not contain a number
         case (!preg_match($numReg, $password)):
-            echo nl2br("Password must contain at least 1 number.". "\n");
-            echo nl2br("\n");
+            ?> 
+            <div align="center">
+                <h2 style="color: red;">(Password must contain at least 1 number.)</h2>
+            </div>
+            <?php
             return false;
+        // if the password is null
         case (null):
-            echo nl2br("Password cannot be null." . "\n");
-            echo nl2br("\n");
+            ?> 
+            <div align="center">
+                <h2 style="color: red;">(Password cannot be null.)</h2>
+            </div>
+            <?php
             return false;
+        // if the password does not contain a symbol
         case (!preg_match($symbolReg, $password)):
-            echo nl2br("Password must contain at least 1 special character.". "\n");
-            echo nl2br("\n");
+            ?> 
+            <div align="center">
+                <h2 style="color: red;">(Password must contain at least 1 special character.)</h2>
+            </div>
+            <?php
             return false;
+        // if the password does not contain a capital
         case (!preg_match($capitalReg, $password)):
-            echo nl2br("Password must contain at least 1 capital character." . "\n");
-            echo nl2br("\n");
+            ?> 
+            <div align="center">
+                <h2 style="color: red;">(Password must contain at least 1 capital character.)</h2>
+            </div>
+            <?php
             return false;
+        // if the password meets all requirements
         default:
             return true;
     }

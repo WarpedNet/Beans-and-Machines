@@ -19,7 +19,7 @@
 			session_destroy();
 		}
 
-		//function for forgetting the session
+		// function for forgetting the session
 		public function forgetSession() {
 			// using the above function
 			$this->killSession();
