@@ -43,7 +43,7 @@ function passwordVerify($password){
             echo nl2br("\n");
             return false;
         case (!preg_match($capitalReg, $password)):
-            echo nl2br("Password must contain at least 1 alphanumeric character." . "\n");
+            echo nl2br("Password must contain at least 1 captial character." . "\n");
             echo nl2br("\n");
             return false;
         case (null):
@@ -51,8 +51,6 @@ function passwordVerify($password){
             echo nl2br("\n");
             return false;
         default:
-            echo nl2br("Password is valid." . "\n");
-            echo nl2br("\n");
             return true;
     }
 }

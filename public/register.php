@@ -10,6 +10,7 @@ if (isset($_POST['submit'])){
         $usrObj->setPassword($_POST["passInput"]);
         $usrObj->setPhoneNum($_POST["phoneNumInput"]);
         $usrObj->setEmail($_POST["emailInput"]);
+        $usrObj->setAdmin(false);
         $usrObj->sendToDatabase();
     }
     else {

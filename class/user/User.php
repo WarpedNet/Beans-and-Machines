@@ -74,7 +74,7 @@ class user // user class
                 "password" => escape($this->password),
                 "email"    => escape($this->email),
                 "phoneNum" => escape($this->phoneNum),
-                "isAdmin"  => escape($this->isAdmin)
+                "isAdmin"  => $this->isAdmin
             );
 
             $query = sprintf(
