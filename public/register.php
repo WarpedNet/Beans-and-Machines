@@ -3,18 +3,20 @@
 if (isset($_POST['submit'])){
     require_once "../src/validation.php";
 
-    if (!checkUsername($_POST['userInput']) && passwordVerify($_POST["passInput"])) {
-        require_once '../class/user/user.php';
-        $usrObj = new user();
-        $usrObj->setUsername($_POST["userInput"]);
-        $usrObj->setPassword($_POST["passInput"]);
-        $usrObj->setPhoneNum($_POST["phoneNumInput"]);
-        $usrObj->setEmail($_POST["emailInput"]);
-        $usrObj->setAdmin(false);
-        $usrObj->sendToDatabase();
+    if (!checkUsername($_POST['userInput'])) {
+        if (passwordVerify($_POST["passInput"]) && verifyPhoneNumber($_POST["phoneNumInput"])) {
+            require_once '../class/user/user.php';
+            $usrObj = new user();
+            $usrObj->setUsername($_POST["userInput"]);
+            $usrObj->setPassword($_POST["passInput"]);
+            $usrObj->setPhoneNum($_POST["phoneNumInput"]);
+            $usrObj->setEmail($_POST["emailInput"]);
+            $usrObj->setAdmin(false);
+            $usrObj->sendToDatabase();
 
-        header("Location: login.php");
-        exit();
+            header("Location: login.php");
+            exit();
+        }
     }
     else {
         echo "Username already exists!";
@@ -38,7 +40,7 @@ if (isset($_POST['submit'])){
         <input name="emailInput" id="emailInput" type="email" placeholder="Enter Email Address" required>
         <br>
         <label for="phoneNumInput">Phone Number:</label>
-        <input name="phoneNumInput" id="phoneNumInput" type="text" placeholder="Enter Phone Number" required>
+        <input name="phoneNumInput" id="phoneNumInput" type="text" placeholder="+X-XXX-XXXX-XXXX" required>
         <br>
         <button name="submit" value="login" type="submit">Register</button>
     </form>

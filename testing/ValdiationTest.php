@@ -35,6 +35,22 @@ null,
 "{}12 2345 6789 1010"
 );
 
+$validPhoneNumbers = array(
+"+1-111-1111-1111",
+"+353-2-555-666",
+"+182-44-5566-666",
+"+12-445-555-6666",
+"+182-99-9999-9999"
+);
+
+$invalidPhoneNumbers = array(
+"",
+"+A-111-1111-1111",
+"+3333-12-2222-2222",
+null,
+"-1-111-1111-1111"
+);
+
 echo "<h1>Password Verification</h1>";
 foreach ($validPasswords as $value) {
 	echo nl2br("Input: ".$value."\n"."Result: ".passwordVerify($value)."\n\n");
@@ -57,6 +73,14 @@ foreach ($validCardNumbers as $id) {
 }
 foreach ($invalidCardNumbers as $id) {
 	echo nl2br("Input: ".$id."\n"."Result: ".verifyCardNumber($id)."\n\n");
+}
+
+echo "<h1>Phone Number Verification</h1>";
+foreach ($validPhoneNumbers as $id) {
+	echo nl2br("Input: ".$id."\n"."Result: ".verifyPhoneNumber($id)."\n\n");
+}
+foreach ($invalidPhoneNumbers as $id) {
+	echo nl2br("Input: ".$id."\n"."Result: ".verifyPhoneNumber($id)."\n\n");
 }
 
 ?>
