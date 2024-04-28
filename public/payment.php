@@ -9,20 +9,22 @@
 
 <?php 
 	if (isset($_POST["submit"])) {
-		if ($paymentInfoObj->checkCardNumber($_POST["cardNum"])){
+		require_once "../class/order/paymentInfo.php";
+		require_once "../class/product/product.php";
+		require_once "../class/order/ProductOrder.php";
+
+		$paymentInfoObj = new paymentInfo();
+		
 			require_once "../src/validation.php";
 			if (verifyCardNumber($_POST["cardNum"])) {
-				require_once "../class/order/paymentInfo.php";
-				require_once "../class/product/product.php";
-				require_once "../class/order/ProductOrder.php";
-
-				$paymentInfoObj = new paymentInfo();
 				$paymentInfoObj->setUserName($_SESSION["Username"]);
 				$paymentInfoObj->setCardNumber($_POST["cardNum"]);
 				$paymentInfoObj->setCardExpDate($_POST["expDate"]);
 				$paymentInfoObj->setCardCVV($_POST["cardCVV"]);
 				$paymentInfoObj->setCardType($_POST["cardType"]);
-	            $paymentInfoObj->sendToDatabase();
+				if ($paymentInfoObj->checkCardNumber($_POST["cardNum"])){
+	            	$paymentInfoObj->sendToDatabase();
+	            }
 				$productObj = new product();
 				$productOrderObj = new ProductOrder();
 
@@ -37,10 +39,7 @@
 
 				header("Location: paymentConfirmed.php"); // After payment send person to place or whatever
 				exit;
-			}
-        }
-        else {
-            echo "Card number already exists!";
+			
         }
 	}
 ?>
@@ -83,7 +82,7 @@
     <!--form for user to add all card values, all values are required-->
 	<form method="POST">
 		<label for="cardNum">Card Number</label>
-		<input type="number" id="cardNum" name="cardNum" required><br>
+		<input type="text" id="cardNum" name="cardNum" required><br>
 		<label for="expDate">Expirary Date</label>
 		<input type="date" id="expDate" name="expDate" required><br>
 		<label for="cardCVV">CVV Number</label>
