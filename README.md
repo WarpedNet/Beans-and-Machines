@@ -14,6 +14,7 @@
 - Worked on database configuration files.
 - User Interface testing.
 - Requirements testing.
+
 Overall Contribution: 33%.
 
 ### Lukas:
