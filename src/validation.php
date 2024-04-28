@@ -24,7 +24,6 @@ function passwordVerify($password){
     $numReg = '/\d/';
     $symbolReg = '/([-\'"()*,.:…;?#~$*<>,.&%£!¬`])/';
     $capitalReg = '/[A-Z]/';
-    $spaceReg = '/[ ]/';
 
     //using the nl2br() function: https://www.php.net/manual/en/function.nl2br.php
     //this is used to echo a break before newlines in the string.
@@ -39,8 +38,8 @@ function passwordVerify($password){
             echo nl2br("Password must contain at least 1 number.". "\n");
             echo nl2br("\n");
             return false;
-        case (!preg_match($spaceReg, $password)):
-            echo nl2br("Password must not contain spaces.". "\n");
+        case (null):
+            echo nl2br("Password cannot be null." . "\n");
             echo nl2br("\n");
             return false;
         case (!preg_match($symbolReg, $password)):
@@ -49,10 +48,6 @@ function passwordVerify($password){
             return false;
         case (!preg_match($capitalReg, $password)):
             echo nl2br("Password must contain at least 1 capital character." . "\n");
-            echo nl2br("\n");
-            return false;
-        case (null):
-            echo nl2br("Password cannot be null." . "\n");
             echo nl2br("\n");
             return false;
         default:
