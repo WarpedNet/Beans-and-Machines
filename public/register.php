@@ -12,6 +12,9 @@ if (isset($_POST['submit'])){
         $usrObj->setEmail($_POST["emailInput"]);
         $usrObj->setAdmin(false);
         $usrObj->sendToDatabase();
+
+        header("Location: login.php");
+        exit();
     }
     else {
         echo "Username already exists!";
