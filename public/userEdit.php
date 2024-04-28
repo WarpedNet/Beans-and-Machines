@@ -27,7 +27,7 @@ if (isset($_SESSION["admin"]) == false || !$_SESSION['admin']){
 		exit();
 	}
 
-	if (isset($_GET["id"]) && preg_match("/\d/",$_GET["id"]) && $_GET["id"] >= 0) {
+	if (isset($_GET["id"]) && verifyID($_GET["id"])) {
 		$userObj->deleteUser($_GET["id"]);
 		header("Location: userEdit.php");
 		exit();

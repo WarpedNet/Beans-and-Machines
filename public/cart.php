@@ -12,11 +12,12 @@
 ?>
 
 <?php
-
-	if (isset($_GET["key"]) && preg_match('/\d/', $_GET["key"]) && isset($_SESSION["Cart"][$_GET["key"]]["quantity"])) {
+	require_once "../src/validation.php";
+	if (isset($_GET["key"]) && verifyID($_GET["key"]) && isset($_SESSION["Cart"][$_GET["key"]]["quantity"])) {
 
 		$_SESSION["Cart"][$_GET["key"]]["quantity"]--;
 
+		// <=0 because if its a negative value it still works unlike == 0
 		if ($_SESSION["Cart"][$_GET["key"]]["quantity"] <= 0) {
 			unset($_SESSION["Cart"][$_GET["key"]]);
 		}

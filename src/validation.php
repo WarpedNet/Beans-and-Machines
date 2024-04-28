@@ -55,6 +55,54 @@ function passwordVerify($password){
     }
 }
 
+// Used to verify id's for $_GET vars
+function verifyID($id) {
+    $digitReg = '/\d/';
+    if ($id == null) {
+        return false;
+    }
+    else if (!preg_match($digitReg, $id)) {
+        return false;
+    }
+    else if ($id < 0) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+function verifyCardNumber($number) {
+    $digitReg = '/\d/';
+    $symbolReg = '/([-\'"(){}*,.:…;?#~$*<>,.&%£!¬` ])/';
+
+    // Removes special chars
+    // https://www.php.net/manual/en/function.preg-replace.php
+    if ($number != null) {
+        $number = preg_replace($symbolReg,"", $number);
+    }
+
+    if ($number == null) {
+        echo nl2br("Card number cannot be null\n");
+        return false;  
+    }
+    else if (!preg_match($digitReg, escape($number))) {
+        echo nl2br("Card number must be only digits\n");
+        return false;
+    }
+    else if (strlen(escape($number)) != 16) {
+        echo nl2br("Card number must be 16 numerical digits\n");
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+function verifyPhoneNumber($number) {
+    
+}
+
 function escape($data) {
     $data = htmlspecialchars($data, ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8");
     $data = trim($data);

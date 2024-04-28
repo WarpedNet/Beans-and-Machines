@@ -11,9 +11,10 @@ if (isset($_SESSION["admin"]) == false || !$_SESSION['admin']){
 
 <?php
 	require_once "../class/order/ProductOrder.php";
+	require_once "../src/validation.php";
 	$orderObj = new productOrder();
 
-	if (isset($_GET["id"]) && preg_match("/\d/", $_GET["id"]) && $_GET["id"] >= 0) {
+	if (isset($_GET["id"]) && verifyID($_GET["id"])) {
 		$orderObj->getOrder($_GET["id"]);
 	
 		if (isset($_POST["submit"])) {
@@ -23,7 +24,8 @@ if (isset($_SESSION["admin"]) == false || !$_SESSION['admin']){
 			if ($_POST["productName"] != null) {
 				$orderObj->setProductName($_POST["productName"]);
 			}
-			if ($_POST["quantity"] != null) {
+			// verify ID works for this scenario
+			if ($_POST["quantity"] != null && verifyID($_POST["quantity"])) {
 				$orderObj->setQuantity($_POST["quantity"]);
 			}
 			$orderObj->updateOrder($_GET["id"]);

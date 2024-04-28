@@ -8,38 +8,39 @@ if (!$_SESSION['Active']){
 
 <?php 
 	if (isset($_POST["submit"])) {
-		require_once "../class/order/paymentInfo.php";
-		require_once "../class/product/product.php";
-		require_once "../class/order/ProductOrder.php";
+		if ($paymentInfoObj->checkCardNumber($_POST["cardNum"])){
+			require_once "../src/validation.php";
+			if (verifyCardNumber($_POST["cardNum"])) {
+				require_once "../class/order/paymentInfo.php";
+				require_once "../class/product/product.php";
+				require_once "../class/order/ProductOrder.php";
 
-		$paymentInfoObj = new paymentInfo();
-		$paymentInfoObj->setUserName($_SESSION["Username"]);
-		$paymentInfoObj->setCardNumber($_POST["cardNum"]);
-		$paymentInfoObj->setCardExpDate($_POST["expDate"]);
-		$paymentInfoObj->setCardCVV($_POST["cardCVV"]);
-		$paymentInfoObj->setCardType($_POST["cardType"]);
-        if ($paymentInfoObj->checkCardNumber($_POST["cardNum"])){
-            $paymentInfoObj->sendToDatabase();
+				$paymentInfoObj = new paymentInfo();
+				$paymentInfoObj->setUserName($_SESSION["Username"]);
+				$paymentInfoObj->setCardNumber($_POST["cardNum"]);
+				$paymentInfoObj->setCardExpDate($_POST["expDate"]);
+				$paymentInfoObj->setCardCVV($_POST["cardCVV"]);
+				$paymentInfoObj->setCardType($_POST["cardType"]);
+	            $paymentInfoObj->sendToDatabase();
+				$productObj = new product();
+				$productOrderObj = new ProductOrder();
+
+				foreach ($_SESSION["Cart"] as $product) {
+					$productObj->updateStock($product["id"], ($product["stock"]-$product["quantity"]));
+
+					$productOrderObj->setUserName($_SESSION["Username"]);
+					$productOrderObj->setProductName($product["name"]);
+					$productOrderObj->setQuantity($product["quantity"]);
+					$productOrderObj->sendToDatabase();
+				}
+
+				header("Location: paymentConfirmed.php"); // After payment send person to place or whatever
+				exit;
+			}
         }
-        else{
+        else {
             echo "Card number already exists!";
         }
-		 
-
-		$productObj = new product();
-		$productOrderObj = new ProductOrder();
-
-		foreach ($_SESSION["Cart"] as $product) {
-			$productObj->updateStock($product["id"], ($product["stock"]-$product["quantity"]));
-
-			$productOrderObj->setUserName($_SESSION["Username"]);
-			$productOrderObj->setProductName($product["name"]);
-			$productOrderObj->setQuantity($product["quantity"]);
-			$productOrderObj->sendToDatabase();
-		}
-
-		header("Location: paymentConfirmed.php"); // After payment send person to place or whatever
-		exit;
 	}
 ?>
 

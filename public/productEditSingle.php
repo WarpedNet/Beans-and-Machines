@@ -8,7 +8,9 @@ if (isset($_SESSION["admin"]) == false || !$_SESSION['admin']){
 	exit;
 }
 
-if (isset($_GET["id"]) && preg_match('/\d/', $_GET["id"]) && $_GET["id"] >= 0) {
+require_once "../src/validation.php";
+
+if (isset($_GET["id"]) && verifyID($_GET["id"])) {
 	require_once "../class/product/product.php";
 	$productObj = new product();
 	$productObj->getProductFromDB($_GET["id"]);

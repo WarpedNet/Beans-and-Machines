@@ -11,11 +11,12 @@ if (isset($_SESSION["admin"]) == false || !$_SESSION['admin']){
 
 <?php
 	require_once "../class/order/ProductOrder.php";
+	require_once "../src/validation.php";
 	$orderObj = new productOrder();
 
 	$orderArray = $orderObj->getAllOrders();
 
-	if (isset($_GET["id"]) && preg_match("/\d/", $_GET["id"]) && $_GET["id"] >= 0) {
+	if (isset($_GET["id"]) && verifyID($_GET["id"])) {
 		$orderObj->deleteOrder($_GET["id"]);
 		header("Location: orders.php");
 		exit();
