@@ -67,7 +67,7 @@ class product
     
     public function getProductFromDB($productID) {
         try {
-            require_once "../src/DBconnect.php";
+            require_once __DIR__."/../../src/DBconnect.php";
 
             $connection = DBconnect();
             $query = "SELECT * FROM products WHERE id = :id";
@@ -93,7 +93,8 @@ class product
     }
     public function getAllProducts() {
         try {
-            require_once '../src/DBconnect.php';
+            // https://www.php.net/manual/en/language.constants.magic.php
+            require_once __DIR__.'/../../src/DBconnect.php';
 
             $connection = DBconnect();
             $query = "SELECT * FROM products";
@@ -108,8 +109,9 @@ class product
 
     public function sendProductToDB() {
         try {
-            require_once '../src/DBconnect.php';
-            require_once '../src/validation.php';
+            // https://www.php.net/manual/en/language.constants.magic.php
+            require_once __DIR__.'/../../src/DBconnect.php';
+            require_once __DIR__.'/../../src/validation.php';
 
             $connection = DBconnect();
 
@@ -138,8 +140,8 @@ class product
     }
     public function updateProduct($id) {
         try {
-            require_once '../src/DBconnect.php';
-            require_once '../src/validation.php';
+            require_once __DIR__.'/../../src/DBconnect.php';
+            require_once __DIR__.'/../../src/validation.php';
 
             $connection = DBconnect();
 
@@ -173,8 +175,8 @@ class product
     }
     public function updateStock($productID, $stock) {
         try {
-            require_once "../src/DBconnect.php";
-            require_once "../src/validation.php";
+            require_once __DIR__."/../../src/DBconnect.php";
+            require_once __DIR__."/../../src/validation.php";
 
             $connection = DBconnect();
 
@@ -190,7 +192,7 @@ class product
     }
     public function deleteProduct($productID) {
         try {
-            require_once "../src/DBconnect.php";
+            require_once __DIR__."/../../src/DBconnect.php";
 
             $connection = DBconnect();
 
