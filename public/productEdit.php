@@ -137,3 +137,8 @@ if (isset($_GET["id"]) && preg_match("/\d/", $_GET["id"]) && $_GET["id"] >=0) {
 		</div>
 	</div>
 </body>
+
+<?php
+	// adding the footer to the page
+	require '../layout/footer.php';
+?>

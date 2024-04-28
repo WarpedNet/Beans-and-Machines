@@ -57,3 +57,8 @@ if (isset($_SESSION["admin"]) == false || !$_SESSION['admin']){
 		<a href="orders.php">View / Edit orders</a>
 	</div>
 </body>
+
+<?php
+    // adding the footer to the page
+    require '../layout/footer.php';
+?>

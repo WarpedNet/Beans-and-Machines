@@ -49,3 +49,7 @@ if (isset($_POST["submit"])) {
     </div>
 </body>
 
+<?php
+    // adding the footer to the page
+    require '../layout/footer.php';
+?>
