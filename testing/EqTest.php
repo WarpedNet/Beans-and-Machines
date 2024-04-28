@@ -11,14 +11,14 @@
 
 
 	// method to check the password and make sure it is from the specific requirements
-	 require_once '../src/validation.php';
-	 
-	 passwordVerify($valid); // pass
-	 passwordVerify($nodigit); // fail
-	 passwordVerify($toosmall); // fail
-	 passwordVerify($toobig); // fail
-	 passwordVerify($nosymbol); // fail
-	 passwordVerify($nocaps); // fail
-	 passwordVerify($null); // fail
-	 passwordVerify($noletters); // fail
+	require_once '../src/validation.php';
+
+	passwordVerify($valid); // pass
+	passwordVerify($nodigit); // fail
+	passwordVerify($toosmall); // fail
+	passwordVerify($toobig); // fail
+	passwordVerify($nosymbol); // fail
+	passwordVerify($nocaps); // fail
+	passwordVerify($null); // fail
+	passwordVerify($noletters); // fail
  ?>
