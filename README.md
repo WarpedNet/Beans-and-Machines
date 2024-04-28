@@ -7,3 +7,25 @@
 
 ## Contribution Statement:
 ### Jake:
+- Index, About Us, Contact pages.
+- Class diagram and planning.
+- Payment Confirmation functionality.
+- Database initialisation file.
+- Worked on database configuration files.
+- User Interface testing.
+- Requirements testing.
+
+### Lukas:
+- Cart and products functionality.
+- Admin CRUD operations.
+- Creation of classes and objects.
+- Payment and Payment Confirmation functionality.
+- Worked on database configuration files.
+- Validation testing.
+- Unit testing.
+
+### Callum:
+- Login and registration functionality.
+- Use case diagram and planning.
+- Equivalence Partition testing.
+- Basis path testing.
