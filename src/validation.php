@@ -27,7 +27,7 @@ function passwordVerify($password){
 
     //using the nl2br() function: https://www.php.net/manual/en/function.nl2br.php
     //this is used to echo a break before newlines in the string.
-    echo nl2br("Testing password: " . $password . "\n");
+    
 
     switch($password) {
         case (strlen($password) < 5 || strlen($password) > 30):

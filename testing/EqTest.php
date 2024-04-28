@@ -12,7 +12,6 @@ $noletters = "123987";
 
 
 //method to check the password and make sure it is from the specific requirements
-//
  require_once '../src/validation.php';
  
  passwordVerify($valid);
