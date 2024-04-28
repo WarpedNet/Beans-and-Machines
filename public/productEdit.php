@@ -138,3 +138,8 @@ if (isset($_GET["id"]) && verifyID($_GET["id"])) {
 		</div>
 	</div>
 </body>
+
+<?php
+	// adding the footer to the page
+	require '../layout/footer.php';
+?>

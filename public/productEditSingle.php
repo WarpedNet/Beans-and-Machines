@@ -109,3 +109,8 @@ if (isset($_GET["id"]) && verifyID($_GET["id"])) {
 		</form>
 	</div>
 </body>
+
+<?php
+	// adding the footer to the page
+	require '../layout/footer.php';
+?>

@@ -125,3 +125,8 @@ if (isset($_SESSION["admin"]) == false || !$_SESSION['admin']){
 		</div>
 	</div>
 </body>
+
+<?php
+	// adding the footer to the page
+	require '../layout/footer.php';
+?>
