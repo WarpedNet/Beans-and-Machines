@@ -9,6 +9,7 @@ $nosymbol = "BoXc2kmmHGPYqVpflq1S";
 $nocaps = "qwertyuiopasdhjk123&";
 $null = "";
 $noletters = "123987";
+$spaces = "12 34 56!aA";
 
 
 //method to check the password and make sure it is from the specific requirements
@@ -22,6 +23,4 @@ $noletters = "123987";
  passwordVerify($nocaps);
  passwordVerify($null);
  passwordVerify($noletters);
- 
-
-
+ passwordVerify($spaces);

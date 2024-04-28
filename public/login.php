@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
         header("location: index.php");
     }
     else {
-        echo "User does not exist";
+        echo "Cannot find username or password.";
     }
 
 }
