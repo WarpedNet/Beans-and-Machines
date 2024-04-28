@@ -54,20 +54,10 @@ class user // user class
         $this->isAdmin = (boolval($isAdmin) && $isAdmin) ? 1 : 0;
     }
 
-    // display method
-    public function displayUser() {
-        return "
-            Email: $this->email\n
-            Username: $this->username\n
-            Password: $this->password\n
-            PhoneNum: $this->phoneNum\n
-        ";
-    }
-
     public function sendToDatabase() {
         try {
-            require_once '../src/DBconnect.php';
-            require_once '../src/validation.php';
+            require_once __DIR__.'/../../src/DBconnect.php';
+            require_once __DIR__.'/../../src/validation.php';
 
             $new_user = array(
                 "username" => escape($this->username),
@@ -95,7 +85,7 @@ class user // user class
     public function getUserFromDatabase($username, $password) {
         try {
             // requiring the database connection file
-            require_once '../src/DBconnect.php';
+            require_once __DIR__.'/../../src/DBconnect.php';
 
             $connection = DBconnect();
 
@@ -133,7 +123,7 @@ class user // user class
     public function getUserFromDatabaseByID($userID) {
         try {
             // requiring the database connection file
-            require_once '../src/DBconnect.php';
+            require_once __DIR__.'/../../src/DBconnect.php';
 
             $connection = DBconnect();
 
@@ -162,7 +152,7 @@ class user // user class
     }
     public function getAllUsers() {
         try {
-            require_once '../src/DBconnect.php';
+            require_once __DIR__.'/../../src/DBconnect.php';
 
             $connection = DBconnect();
 
@@ -177,7 +167,7 @@ class user // user class
     }
     public function deleteUser($userID) {
         try {
-            require_once "../src/DBconnect.php";
+            require_once __DIR__.'/../../src/DBconnect.php';
 
             $connection = DBconnect();
 
@@ -192,8 +182,8 @@ class user // user class
     }
     public function updateUser($userID) {
         try {
-            require_once '../src/DBconnect.php';
-            require_once '../src/validation.php';
+            require_once __DIR__.'/../../src/DBconnect.php';
+            require_once __DIR__.'/../../src/validation.php';
 
             $connection = DBconnect();
 

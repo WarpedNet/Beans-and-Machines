@@ -1,5 +1,5 @@
 <?php
-
+// DATABASE MUST BE NEWLY REMADE FOR THESE TESTS TO WORK
 use PHPUnit\Framework\TestCase;
 
 class ProductUnitTest extends TestCase {
@@ -45,7 +45,6 @@ class ProductUnitTest extends TestCase {
 		$this->assertEquals("In House", $productObj->getVendor());
 		$this->assertEquals("12.99", $productObj->getPrice());
 		$this->assertEquals("1234", $productObj->getStock());
-;
 	}
 
 	public function testUpdateProductStock() {
