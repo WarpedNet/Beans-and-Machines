@@ -14,6 +14,7 @@
 - Worked on database configuration files.
 - User Interface testing.
 - Requirements testing.
+Overall Contribution: 33%.
 
 ### Lukas:
 - Cart and products functionality.
@@ -23,9 +24,14 @@
 - Worked on database configuration files.
 - Validation testing.
 - Unit testing.
+Overall Contribution: 33%.
 
 ### Callum:
 - Login and registration functionality.
+- Sessions functionality.
+- Form validation and sanitisation.
+- User database storage and database configuration.
 - Use case diagram and planning.
 - Equivalence Partition testing.
 - Basis path testing.
+  Overall Contribution: 33%.
